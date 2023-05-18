@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarSize="0dp"
-    android:padding="20dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
     tools:context=".activities.RegisterActivity">
     <LinearLayout
         android:orientation="vertical"
@@ -126,7 +127,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_edittext"
                 android:ellipsize="end"
-                android:hint="Pilih"
+                android:hint="Riwayat Penyakit"
                 android:padding="0dp"
                 android:inputType="none"
                 android:maxLines="1"

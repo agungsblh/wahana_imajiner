@@ -13,8 +13,5 @@ class GlobalData {
         var tinggi_badan:Int = 0
         var berat_badan:Int = 0
 
-
-        //resource db
-        val link:String = "https://mythd.site/wahana/android"
     }
 }

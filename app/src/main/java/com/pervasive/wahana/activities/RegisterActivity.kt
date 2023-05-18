@@ -1,19 +1,37 @@
 package com.pervasive.wahana.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
-import com.pervasive.wahana.R
+import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.Volley
 import com.pervasive.wahana.databinding.ActivityRegisterBinding
+import com.pervasive.wahana.model.Penyakit
+import com.pervasive.wahana.utils.LinkApi
+import com.pervasive.wahana.utils.LoadingDialog
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding:ActivityRegisterBinding
+    lateinit var pilihanListPenyakit: ArrayAdapter<CharSequence>
+    var listPenyakit = ArrayList<String>()
+    var cekPenyakit:Int = -1
+    val loading = LoadingDialog(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getPenyakit()
+        binding.penyakit.setOnItemClickListener { parent, view, position, id ->
+            cekPenyakit = position
+        }
 
         onAction()
     }
@@ -21,6 +39,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.apply {
             daftar.setOnClickListener {
                 checkField()
+                //Toast.makeText(this@RegisterActivity,cekPenyakit.toString(),Toast.LENGTH_SHORT).show()
             }
             login.setOnClickListener {
                 val i = Intent(this@RegisterActivity, LoginActivity::class.java)
@@ -68,7 +87,11 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             /////riwayat
-
+            if (penyakit.text.toString().isEmpty()){
+                Toast.makeText(this@RegisterActivity,"Penyakit kosong", Toast.LENGTH_SHORT).show()
+                penyakit.requestFocus()
+                return
+            }
             /////end riwayat
 
             if (beratBadan.text.toString().toInt() < 20){
@@ -82,5 +105,36 @@ class RegisterActivity : AppCompatActivity() {
                 return
             }
         }
+    }
+    private fun getPenyakit(){
+        loading.startLoading()
+        var queue: RequestQueue = Volley.newRequestQueue(this)
+        var reques = JsonArrayRequest(
+            Request.Method.GET, LinkApi.link_get_penyakit,null,
+            { response ->
+                if(response.length()==0){
+                    loading.isDismiss()
+                }else{
+                    loading.isDismiss()
+                    for (s in 0..response.length()-1){
+                        val job = response.getJSONObject(s)
+                        val id = job.getInt("id")
+                        val nama_penyakit = job.getString("nama_penyakit")
+                        listPenyakit.add(nama_penyakit)
+//                        listPenyakit.add(Penyakit(id,nama_penyakit))
+                    }
+                    try {
+                        val adapter= ArrayAdapter(this, android.R.layout.simple_list_item_1, listPenyakit)
+                        binding.penyakit.setAdapter(adapter)
+                    }catch (e:Exception){
+                        Toast.makeText(this,"Terjadi kesalahan",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            },
+            { error ->
+                loading.isDismiss()
+                Toast.makeText(this,error.toString(),Toast.LENGTH_SHORT).show()
+            })
+        queue.add(reques)
     }
 }

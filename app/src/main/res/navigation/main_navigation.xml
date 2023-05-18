@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_berandaFragment_to_akunFragment"
             app:destination="@id/akunFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_topupFragment"
+            app:destination="@id/topupFragment" />
     </fragment>
     <fragment
         android:id="@+id/akunFragment"
         android:name="com.pervasive.wahana.fragments.AkunFragment"
         android:label="fragment_akun"
         tools:layout="@layout/fragment_akun" />
+    <fragment
+        android:id="@+id/topupFragment"
+        android:name="com.pervasive.wahana.fragments.TopupFragment"
+        android:label="fragment_topup"
+        tools:layout="@layout/fragment_topup" />
 </navigation>

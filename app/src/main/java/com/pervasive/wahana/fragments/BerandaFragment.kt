@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.pervasive.wahana.R
 import com.pervasive.wahana.databinding.FragmentBerandaBinding
 
@@ -22,7 +23,9 @@ class BerandaFragment : Fragment() {
     }
     private fun onAction(){
         binding.apply {
-
+            topUp.setOnClickListener {
+                findNavController().navigate(R.id.action_berandaFragment_to_topupFragment)
+            }
         }
     }
 }

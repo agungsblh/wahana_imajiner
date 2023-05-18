@@ -12,7 +12,6 @@ import com.pervasive.wahana.databinding.FragmentBerandaBinding
 class BerandaFragment : Fragment() {
     private var _binding : FragmentBerandaBinding?= null
     private val binding get() = _binding!!
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentBerandaBinding.inflate(inflater, container, false)
         onAction()
@@ -27,5 +26,8 @@ class BerandaFragment : Fragment() {
                 findNavController().navigate(R.id.action_berandaFragment_to_topupFragment)
             }
         }
+    }
+    private fun getDataAkun(){
+
     }
 }

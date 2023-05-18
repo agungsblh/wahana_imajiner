@@ -21,6 +21,7 @@ import com.pervasive.wahana.MainActivity
 import com.pervasive.wahana.R
 import com.pervasive.wahana.databinding.ActivityRegisterBinding
 import com.pervasive.wahana.model.Penyakit
+import com.pervasive.wahana.utils.GlobalData
 import com.pervasive.wahana.utils.LinkApi
 import com.pervasive.wahana.utils.LoadingDialog
 
@@ -119,14 +120,7 @@ class RegisterActivity : AppCompatActivity() {
         var url:String = LinkApi.link_register_user
         var request: RequestQueue = Volley.newRequestQueue(this)
         var stringRequest = StringRequest(
-            Request.Method.GET,url+
-                    "?nama="+binding.nama.text.toString()+
-                    "&no_hp="+binding.nomorHp.text.toString()+
-                    "&email="+binding.emailRegister.text.toString()+
-                    "&password"+binding.password.text.toString()+
-                    "&id_penyakit"+cekPenyakit+
-                    "&berat_badan"+binding.beratBadan.text.toString()+
-                    "&tinggi_badan"+binding.tinggiBadan.text.toString(),
+            Request.Method.GET,url+"?nama="+binding.nama.text.toString()+"&no_hp="+binding.nomorHp.text.toString()+"&email="+binding.emailRegister.text.toString()+"&password="+binding.password.text.toString()+"&id_penyakit="+cekPenyakit.toString()+"&berat_badan="+binding.beratBadan.text.toString()+"&tinggi_badan="+binding.tinggiBadan.text.toString(),
             { response ->
                 loading.isDismiss()
                 if(response.equals("Register sukses")){
@@ -169,17 +163,54 @@ class RegisterActivity : AppCompatActivity() {
 
             btn_yes.setOnClickListener {
                 dialog.dismiss()
-                val i = Intent(this,MainActivity::class.java)
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                startActivity(i)
-
+                loginAfterRegist()
             }
         }catch (e:java.lang.Exception){
 
         }
 
     }
+    private fun loginAfterRegist(){
+        loading.startLoading()
+        var queue: RequestQueue = Volley.newRequestQueue(this)
+        var reques = JsonArrayRequest(
+            Request.Method.GET, LinkApi.link_get_data_akun+"?email="+binding.emailRegister.text.toString()+"&password="+binding.password.text.toString(),null,
+            { response ->
+                if(response.length()==0){
+                    loading.isDismiss()
+                }else{
+                    loading.isDismiss()
+                    for (s in 0..response.length()-1){
+                        val job = response.getJSONObject(s)
+                        GlobalData.id_user = job.getInt("id")
+                        GlobalData.nama_user = job.getString("nama")
+                        GlobalData.email_user = job.getString("email")
+                        GlobalData.password= job.getString("password")
+                        GlobalData.no_hp= job.getString("no_hp")
+                        GlobalData.id_riwayat_penyakit = job.getInt("riwayat_penyakit")
+                        GlobalData.tinggi_badan = job.getInt("tinggi_badan")
+                        GlobalData.berat_badan = job.getInt("berat_badan")
+                        GlobalData.saldo = job.getInt("saldo")
+                        GlobalData.detail_riwayat_penyakit = job.getString("nama_penyakit")
+                    }
+                    try {
+                        val i = Intent(this,MainActivity::class.java)
+                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(i)
+
+                    }catch (e:Exception){
+                        Toast.makeText(this,"Terjadi kesalahan",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            },
+            { error ->
+                loading.isDismiss()
+                Toast.makeText(this,error.toString(),Toast.LENGTH_SHORT).show()
+            })
+        queue.add(reques)
+    }
+
     private fun getPenyakit(){
         loading.startLoading()
         var queue: RequestQueue = Volley.newRequestQueue(this)

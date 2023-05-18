@@ -1,17 +1,24 @@
 package com.pervasive.wahana.activities
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.pervasive.wahana.MainActivity
+import com.pervasive.wahana.R
 import com.pervasive.wahana.databinding.ActivityRegisterBinding
 import com.pervasive.wahana.model.Penyakit
 import com.pervasive.wahana.utils.LinkApi
@@ -104,7 +111,75 @@ class RegisterActivity : AppCompatActivity() {
                 tinggiBadan.requestFocus()
                 return
             }
+            register()
         }
+    }
+    private fun register(){
+        loading.startLoading()
+        var url:String = LinkApi.link_register_user
+        var request: RequestQueue = Volley.newRequestQueue(this)
+        var stringRequest = StringRequest(
+            Request.Method.GET,url+
+                    "?nama="+binding.nama.text.toString()+
+                    "&no_hp="+binding.nomorHp.text.toString()+
+                    "&email="+binding.emailRegister.text.toString()+
+                    "&password"+binding.password.text.toString()+
+                    "&id_penyakit"+cekPenyakit+
+                    "&berat_badan"+binding.beratBadan.text.toString()+
+                    "&tinggi_badan"+binding.tinggiBadan.text.toString(),
+            { response ->
+                loading.isDismiss()
+                if(response.equals("Register sukses")){
+                    try {
+
+                        showDialogComplete()
+                    }catch (ex:Exception){
+
+                    }
+                }else{
+                    Log.d("ERROR",response)
+                }
+            },
+            { error ->
+                Log.d("ErrorApp",error.toString())
+                loading.isDismiss()
+            })
+        request.add(stringRequest)
+    }
+    private fun showDialogComplete(){
+        val view = View.inflate(this, R.layout.dialog_anim_ok,null)
+        val builder = AlertDialog.Builder(this)
+        builder.setView(view)
+        val dialog = builder.create()
+
+        val judul = view.findViewById<TextView>(R.id.judul)
+        val isi = view.findViewById<TextView>(R.id.isi)
+        val btn_yes = view.findViewById<Button>(R.id.btn_ok)
+        val anim = view.findViewById<LottieAnimationView>(R.id.anim)
+
+        anim.setAnimation(R.raw.anim_complete)
+        anim.loop(false)
+        judul.text = "Sukses"
+        isi.text = "Berhasil mendaftar akun"
+
+        try {
+            dialog.show()
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            btn_yes.setOnClickListener {
+                dialog.dismiss()
+                val i = Intent(applicationContext,MainActivity::class.java)
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(i)
+
+            }
+        }catch (e:java.lang.Exception){
+
+        }
+
     }
     private fun getPenyakit(){
         loading.startLoading()

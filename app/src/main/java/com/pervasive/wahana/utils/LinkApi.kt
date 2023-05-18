@@ -16,6 +16,7 @@ class LinkApi {
 
         /////////////////////////SEND
         val link_register_user = link_api+"register_user.php"
+        val link_topup = link_api+"top_up.php"
 
         /////////////////////////END SEND
 

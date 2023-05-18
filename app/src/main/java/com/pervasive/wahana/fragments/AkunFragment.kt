@@ -27,6 +27,7 @@ class AkunFragment : Fragment() {
         _binding = FragmentAkunBinding.inflate(inflater, container, false)
         onAction()
 
+        initData()
         getDataAkun()
 
         return binding.root

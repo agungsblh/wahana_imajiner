@@ -17,7 +17,7 @@ class BerandaFragment : Fragment() {
         _binding = FragmentBerandaBinding.inflate(inflater, container, false)
         onAction()
 
-        binding.saldo.text = "Rp. "+GlobalData.saldo
+        binding.saldo.text = "Rp. "+GlobalData.saldo.toString().reversed().chunked(3).joinToString(".").reversed()
 
         return binding.root
     }

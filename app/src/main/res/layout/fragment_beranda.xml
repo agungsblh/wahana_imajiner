@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".fragments.BerandaFragment">
@@ -23,10 +24,57 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"/>
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:weightSum="2"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_weight="0.5"
 
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Saldo"
+                            android:textColor="@color/biru_soft"/>
+                        <TextView
+                            android:id="@+id/saldo"
+                            android:textSize="14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Rp.123.000"
+                            android:textColor="@color/biru_soft"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1.5"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/top_up"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_add"
+                            app:tint="@color/biru_soft"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                        <TextView
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="Isi Saldo"
+                            android:textSize="12sp"
+                            android:textColor="@color/biru_soft"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

@@ -45,6 +45,81 @@ class TopupFragment : Fragment() {
                 tp_lv5 = 0
                 tp_lv6 = 0
                 lv1.setCardBackgroundColor(resources.getColor(R.color.hijau_soft))
+                lv2.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv3.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv4.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv5.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv6.setCardBackgroundColor(resources.getColor(R.color.white))
+            }
+            lv2.setOnClickListener {
+                tp_lv1 = 0
+                tp_lv2 = 1
+                tp_lv3 = 0
+                tp_lv4 = 0
+                tp_lv5 = 0
+                tp_lv6 = 0
+                lv1.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv2.setCardBackgroundColor(resources.getColor(R.color.hijau_soft))
+                lv3.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv4.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv5.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv6.setCardBackgroundColor(resources.getColor(R.color.white))
+            }
+            lv3.setOnClickListener {
+                tp_lv1 = 0
+                tp_lv2 = 0
+                tp_lv3 = 1
+                tp_lv4 = 0
+                tp_lv5 = 0
+                tp_lv6 = 0
+                lv1.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv2.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv3.setCardBackgroundColor(resources.getColor(R.color.hijau_soft))
+                lv4.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv5.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv6.setCardBackgroundColor(resources.getColor(R.color.white))
+            }
+            lv4.setOnClickListener {
+                tp_lv1 = 0
+                tp_lv2 = 0
+                tp_lv3 = 0
+                tp_lv4 = 1
+                tp_lv5 = 0
+                tp_lv6 = 0
+                lv1.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv2.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv3.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv4.setCardBackgroundColor(resources.getColor(R.color.hijau_soft))
+                lv5.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv6.setCardBackgroundColor(resources.getColor(R.color.white))
+            }
+            lv5.setOnClickListener {
+                tp_lv1 = 0
+                tp_lv2 = 0
+                tp_lv3 = 0
+                tp_lv4 = 0
+                tp_lv5 = 1
+                tp_lv6 = 0
+                lv1.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv2.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv3.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv4.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv5.setCardBackgroundColor(resources.getColor(R.color.hijau_soft))
+                lv6.setCardBackgroundColor(resources.getColor(R.color.white))
+            }
+            lv6.setOnClickListener {
+                tp_lv1 = 0
+                tp_lv2 = 0
+                tp_lv3 = 0
+                tp_lv4 = 0
+                tp_lv5 = 0
+                tp_lv6 = 1
+                lv1.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv2.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv3.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv4.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv5.setCardBackgroundColor(resources.getColor(R.color.white))
+                lv6.setCardBackgroundColor(resources.getColor(R.color.hijau_soft))
             }
         }
     }

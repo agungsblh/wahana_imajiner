@@ -1,31 +1,34 @@
 package com.pervasive.wahana.activities
 
+import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
-import com.pervasive.wahana.Manifest
-import com.pervasive.wahana.R
 import com.pervasive.wahana.databinding.ActivityScannerBinding
+import java.security.AccessController.getContext
+
 
 class ScannerActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
     private lateinit var binding:ActivityScannerBinding
-    @RequiresApi(Build.VERSION_CODES.M)
+    val REQUEST_ID_MULTIPLE_PERMISSIONS = 7
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        requestCameraPermission()
+        checkAndroidVersion()
+
         codeScanner = CodeScanner(this, binding.scannerView)
         codeScanner.camera = CodeScanner.CAMERA_BACK
         codeScanner.formats = CodeScanner.ALL_FORMATS
@@ -34,7 +37,10 @@ class ScannerActivity : AppCompatActivity() {
         onAction()
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Scan: ${it.text}", Toast.LENGTH_LONG).show()
+                /////////////////////
+
+                //action
             }
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
@@ -52,30 +58,35 @@ class ScannerActivity : AppCompatActivity() {
             }
         }
     }
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onResume() {
         super.onResume()
-        requestCameraPermission()
+
         codeScanner.startPreview()
     }
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun requestCameraPermission() {
-        when {
-            ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.CAMERA
-            ) == PackageManager.PERMISSION_GRANTED -> {
-//                openCamera()
-                codeScanner = CodeScanner(this, binding.scannerView)
-                // The permission is granted
-                // you can go with the flow that requires permission here
-            }
-            shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA) -> {
-
-            }
-
+    private fun checkAndroidVersion() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkAndRequestPermissions()
+        } else {
+            // code for lollipop and pre-lollipop devices
         }
     }
+    private fun checkAndRequestPermissions(): Boolean {
+        val camera = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
+        val listPermissionsNeeded: MutableList<String> = ArrayList()
+        if (camera != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.CAMERA)
+        }
+
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(
+                this,
+                listPermissionsNeeded.toTypedArray<String>(),
+                REQUEST_ID_MULTIPLE_PERMISSIONS
+            )
+            return false
+        }
+        return true
+    }
+
 
 }

@@ -32,8 +32,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
-                        android:layout_weight="0.5"
-
+                        android:layout_weight="0.3"
+                        android:layout_alignParentStart="true"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -55,7 +55,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_weight="1.5"
+                        android:layout_weight="1.7"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -64,19 +64,280 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_add"
                             app:tint="@color/biru_soft"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"/>
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"/>
                         <TextView
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="Isi Saldo"
-                            android:textSize="12sp"
+                            android:maxLines="1"
+                            android:textSize="10sp"
                             android:textColor="@color/biru_soft"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="-70dp"
+                app:cardCornerRadius="15dp"
+                android:elevation="5dp"
+                app:cardElevation="5dp"
+                app:cardMaxElevation="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:padding="16dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/if_ada_tiket"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            app:tint="@color/orange"
+                            android:layout_gravity="center"
+                            android:src="@drawable/tickets"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                        <LinearLayout
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:text="Tiket Aktif"
+                                android:textSize="10sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:text="Tiket Premium"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:gravity="start"
+                        android:id="@+id/if_tidak_ada_tiket"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            app:tint="@color/orange"
+                            android:layout_gravity="center"
+                            android:src="@drawable/tickets"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                        <LinearLayout
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:text="Harga Hari ini"
+                                android:textSize="10sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:text="Rp. 70.000"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <Button
+                                android:id="@+id/beli_tiket"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginEnd="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:background="@drawable/rounded_button_15"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Beli"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="12dp"
+                        android:weightSum="3"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:id="@+id/wahana"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                app:tint="@color/orange"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:src="@drawable/carousel"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"/>
+                            <TextView
+                                android:text="Wahana"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textSize="10sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/restaurant"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                app:tint="@color/orange"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:src="@drawable/restaurant"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"/>
+                            <TextView
+                                android:text="Restaurant"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textSize="10sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/vending_machine"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                app:tint="@color/orange"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:src="@drawable/vending_machine"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"/>
+                            <TextView
+                                android:text="Vending Machine"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textSize="10sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="12dp"
+                        android:weightSum="3"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:id="@+id/mercahndise"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                app:tint="@color/orange"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:src="@drawable/merchandise"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"/>
+                            <TextView
+                                android:text="Merchandise"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textSize="10sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                        <!--                    <LinearLayout-->
+                        <!--                        android:id="@+id/restaurant"-->
+                        <!--                        android:layout_weight="1"-->
+                        <!--                        android:orientation="vertical"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content">-->
+                        <!--                        <ImageView-->
+                        <!--                            app:tint="@color/orange"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:src="@drawable/restaurant"-->
+                        <!--                            android:layout_width="45dp"-->
+                        <!--                            android:layout_height="45dp"/>-->
+                        <!--                        <TextView-->
+                        <!--                            android:text="Restaurant"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:textSize="10sp"-->
+                        <!--                            android:textColor="@color/black"-->
+                        <!--                            android:fontFamily="@font/poppins_semibold"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"/>-->
+                        <!--                    </LinearLayout>-->
+                        <!--                    <LinearLayout-->
+                        <!--                        android:id="@+id/vending_machine"-->
+                        <!--                        android:layout_weight="1"-->
+                        <!--                        android:orientation="vertical"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content">-->
+                        <!--                        <ImageView-->
+                        <!--                            app:tint="@color/orange"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:src="@drawable/vending_machine"-->
+                        <!--                            android:layout_width="45dp"-->
+                        <!--                            android:layout_height="45dp"/>-->
+                        <!--                        <TextView-->
+                        <!--                            android:text="Vending Machine"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:gravity="center"-->
+                        <!--                            android:textSize="10sp"-->
+                        <!--                            android:textColor="@color/black"-->
+                        <!--                            android:fontFamily="@font/poppins_semibold"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"/>-->
+                        <!--                    </LinearLayout>-->
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 

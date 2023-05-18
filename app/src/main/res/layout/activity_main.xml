@@ -29,8 +29,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:elevation="2dp"
-            app:itemTextColor="@color/hijau_soft"
-
+            app:itemTextColor="@color/kuning"
             app:labelVisibilityMode="selected"
             app:menu="@menu/menu_bottom"
             android:background="@drawable/bg_transparan"
@@ -42,6 +41,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/form_pemilihan"
         app:tint="@color/white"
+        android:backgroundTint="@color/kuning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottomAppBar"

@@ -3,10 +3,13 @@
     <style name="Base.Theme.Wahana" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/hijau_soft</item>
-        <item name="colorPrimaryVariant">@color/hijau_soft</item>
+        <item name="colorPrimary">@color/kuning</item>
+        <item name="colorPrimaryVariant">@color/kuning</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
     </style>
 
     <style name="Theme.Wahana" parent="Base.Theme.Wahana" />

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.pervasive.wahana.R
 import com.pervasive.wahana.databinding.FragmentBerandaBinding
+import com.pervasive.wahana.utils.GlobalData
 
 class BerandaFragment : Fragment() {
     private var _binding : FragmentBerandaBinding?= null
@@ -16,7 +17,7 @@ class BerandaFragment : Fragment() {
         _binding = FragmentBerandaBinding.inflate(inflater, container, false)
         onAction()
 
-
+        binding.saldo.text = "Rp. "+GlobalData.saldo
 
         return binding.root
     }

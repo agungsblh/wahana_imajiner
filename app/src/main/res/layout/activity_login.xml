@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LoginActivity"
+    android:scrollbarSize="0dp"
+    android:padding="20dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@drawable/login"
+            android:id="@+id/image_onboarding"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center" />
+        <TextView
+            android:text="Masuk"
+            android:layout_marginBottom="23dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="23dp"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/poppins_light"
+            android:hint="Alamat email"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textSize="14sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            app:passwordToggleEnabled="true"
+            app:boxBackgroundMode="none"
+            android:layout_marginBottom="23dp"
+            app:hintEnabled="false"
+            app:passwordToggleTint="@color/hijau"
+            android:background="@drawable/rounded_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/login_password"
+                android:hint="Sandi"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_light"
+                android:inputType="textPassword"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+
+            android:id="@+id/lupa_sandi"
+            android:text="Lupa kata sandi?"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="14sp"
+            android:textColor="@color/hijau"
+            android:layout_marginBottom="23dp"
+            android:gravity="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/login_masuk"
+            android:text="Masuk"
+            android:layout_marginBottom="17dp"
+
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:background="@drawable/rounded_button_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_marginTop="17dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text=" Belum punya akun?"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/buatakun"
+                    android:layout_marginStart="10dp"
+                    android:text="Buat akun"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="14sp"
+                    android:textColor="@color/hijau"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <TextView
+            android:text="aa"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>

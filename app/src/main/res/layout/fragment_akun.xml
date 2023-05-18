@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kuning"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.AkunFragment">
+
+    <ImageView
+        android:id="@+id/bulat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end"
+        android:layout_marginTop="-40dp"
+        android:background="@drawable/bundar_akun" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/bundar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/bulat"
+        android:src="@color/white"
+        android:layout_centerHorizontal="true"
+        app:shapeAppearance="@style/Circular" />
+    <LinearLayout
+        android:id="@+id/isi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/bundar"
+        android:layout_marginTop="-50dp"
+        android:background="@drawable/rounded_top">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/EditProfile"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:background="@drawable/rounded_button_20"
+                android:backgroundTint="@color/kuning"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Edit Profile"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarSize="0dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/nama_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_button_20"
+                    android:backgroundTint="@color/abu_soft"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="My name is orang"
+                    android:textColor="@color/black"
+                    android:gravity="center|start"
+                    android:paddingHorizontal="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No.Hp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/no_hp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_button_20"
+                    android:backgroundTint="@color/abu_soft"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="08xxxxxxxxxx"
+                    android:textColor="@color/black"
+                    android:gravity="center|start"
+                    android:paddingHorizontal="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kelamin"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/jenis_kelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_button_20"
+                    android:backgroundTint="@color/abu_soft"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Laki-laki"
+                    android:textColor="@color/black"
+                    android:gravity="center|start"
+                    android:paddingHorizontal="20dp"/>
+                <Button
+                    android:id="@+id/logout"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="50dp"
+                    app:backgroundTint="@color/black"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_button_20"
+                    android:text="Log Out"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="vertical"
+                    android:background="@color/white"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/isi"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="70dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Akun"
+        android:textColor="@color/white"
+        android:textSize="28sp" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bulat"
+        android:layout_centerHorizontal="true">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/foto_profil"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:src="@color/black"
+            app:shapeAppearance="@style/Circular" />
+    </FrameLayout>
+
+</RelativeLayout>

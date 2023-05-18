@@ -9,5 +9,14 @@
         android:id="@+id/berandaFragment"
         android:name="com.pervasive.wahana.fragments.BerandaFragment"
         android:label="fragment_beranda"
-        tools:layout="@layout/fragment_beranda" />
+        tools:layout="@layout/fragment_beranda" >
+        <action
+            android:id="@+id/action_berandaFragment_to_akunFragment"
+            app:destination="@id/akunFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/akunFragment"
+        android:name="com.pervasive.wahana.fragments.AkunFragment"
+        android:label="fragment_akun"
+        tools:layout="@layout/fragment_akun" />
 </navigation>

@@ -19,7 +19,6 @@ class TopupFragment : Fragment() {
     private var tp_lv4 = 0
     private var tp_lv5 = 0
     private var tp_lv6 = 0
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentTopupBinding.inflate(inflater, container, false)
         onAction()

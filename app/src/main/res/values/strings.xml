@@ -2,4 +2,6 @@
     <string name="app_name">Wahana</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_format"><font color="#484848">Dengan mendaftar, kamu setuju dengan </font>
+<font color="#329B86">ketentuan layanan </font><font color="#484848">dan </font><font color="#329B86">kebijakan privasi</font></string>
 </resources>

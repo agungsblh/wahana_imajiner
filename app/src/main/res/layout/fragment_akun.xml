@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/kuning"
+    android:background="@color/hijau"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AkunFragment">
 
@@ -41,7 +41,7 @@
                 android:layout_width="100dp"
                 android:layout_height="20dp"
                 android:background="@drawable/rounded_button_20"
-                android:backgroundTint="@color/kuning"
+                android:backgroundTint="@color/hijau"
                 android:layout_gravity="center"
                 android:layout_marginTop="45dp"
                 android:layout_marginBottom="15dp">

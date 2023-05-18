@@ -131,7 +131,6 @@ class RegisterActivity : AppCompatActivity() {
                 loading.isDismiss()
                 if(response.equals("Register sukses")){
                     try {
-
                         showDialogComplete()
                     }catch (ex:Exception){
 
@@ -170,7 +169,7 @@ class RegisterActivity : AppCompatActivity() {
 
             btn_yes.setOnClickListener {
                 dialog.dismiss()
-                val i = Intent(applicationContext,MainActivity::class.java)
+                val i = Intent(this,MainActivity::class.java)
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(i)

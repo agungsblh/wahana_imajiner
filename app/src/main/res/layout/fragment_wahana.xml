@@ -78,19 +78,56 @@
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
+                        <LinearLayout
+                            android:weightSum="2"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="1"
+                                android:text="Thrill"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:weightSum="1"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_edittext"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp">
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.2"
+                                    app:shapeAppearance="@style/RoundedSquare_20"
+                                    android:src="@color/hijau"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.8"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:shapeAppearance="@style/RoundedSquare_40"
+                                    android:src="@color/white"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
                 <TextView
-                    android:text="Nikmati keseruan Ruham Hantu, berpetualang di dalam rangkaian wahana yang terinspirasi oleh hantu-hantu populer didunia. Dilengkapi dengan berbagai macam jenis hantu dan boneka yang akan selalu menemanimu. Sebuah pengalaman seru yang tidak hanya menyenangkan untuk anak-anak, tapi juga untuk Anda yang berjiwa muda."
+                    android:text="Nikmati keseruan Rumah Hantu, berpetualang di dalam rangkaian wahana yang terinspirasi oleh hantu-hantu populer didunia. Dilengkapi dengan berbagai macam jenis hantu dan boneka yang akan selalu menemanimu. Sebuah pengalaman seru yang tidak hanya menyenangkan untuk anak-anak, tapi juga untuk Anda yang berjiwa muda."
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/poppins"
                     android:justificationMode="inter_word"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

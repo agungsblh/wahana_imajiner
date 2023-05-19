@@ -22,7 +22,7 @@
         android:theme="@style/Theme.Wahana"
         tools:targetApi="31">
         <activity
-            android:name=".activities.WahanaScanningActivity"
+            android:name=".VendingMachine"
             android:exported="false" />
         <activity
             android:name=".activities.ScannerActivity"

@@ -53,13 +53,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         val editor:SharedPreferences.Editor = sharedPreferences.edit()
         editor.putBoolean("Login?",true)
         editor.putString("email",GlobalData.email_user)
         editor.putString("password",GlobalData.password)
         editor.putInt("saldo",GlobalData.saldo)
         editor.apply()
+        super.onDestroy()
+
     }
     private fun onAction(){
         binding.apply {

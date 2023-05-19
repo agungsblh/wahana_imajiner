@@ -19,9 +19,11 @@ import com.android.volley.toolbox.Volley
 import com.pervasive.wahana.R
 import com.pervasive.wahana.databinding.FragmentBerandaBinding
 import com.pervasive.wahana.databinding.FragmentTopupBinding
+import com.pervasive.wahana.utils.Converter
 import com.pervasive.wahana.utils.GlobalData
 import com.pervasive.wahana.utils.LinkApi
 import com.pervasive.wahana.utils.LoadingDialogFrg
+import java.util.Date
 
 
 class TopupFragment : Fragment() {
@@ -126,11 +128,12 @@ class TopupFragment : Fragment() {
         }else{
             pilihan_topup = 6
         }
+        var tanggal =Converter.timeInMillisToDate(System.currentTimeMillis())
         LoadingDialogFrg.displayLoadingWithText(requireContext(),false)
         var url:String = LinkApi.link_topup
         var request: RequestQueue = Volley.newRequestQueue(requireContext())
         var stringRequest = StringRequest(
-            Request.Method.GET,url+"?pilihan_topup="+pilihan_topup.toString()+"&email="+GlobalData.email_user+"&password="+GlobalData.password,
+            Request.Method.GET,url+"?pilihan_topup="+pilihan_topup.toString()+"&email="+GlobalData.email_user+"&password="+GlobalData.password+"&date="+tanggal,
             { response ->
                 LoadingDialogFrg.hideLoading()
                 if(response.equals("Topup sukses")){

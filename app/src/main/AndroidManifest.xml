@@ -25,9 +25,6 @@
             android:name=".activities.VendingMachine"
             android:exported="false" />
         <activity
-            android:name=".activities.WahanaScanningActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.ScannerActivity"
             android:exported="false" />
         <activity

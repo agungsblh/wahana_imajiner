@@ -1,5 +1,6 @@
 package com.pervasive.wahana.fragments
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pervasive.wahana.R
+import com.pervasive.wahana.activities.VendingMachine
 import com.pervasive.wahana.adapter.PromoImageSlider
 import com.pervasive.wahana.databinding.FragmentBerandaBinding
 import com.pervasive.wahana.utils.GlobalData
@@ -33,7 +35,6 @@ class BerandaFragment : Fragment() {
     private lateinit var adapter : PromoImageSlider
     private lateinit var handler : Handler
     private lateinit var runnable: Runnable
-    private var currentView = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentBerandaBinding.inflate(inflater, container, false)
 
@@ -81,6 +82,7 @@ class BerandaFragment : Fragment() {
         val handlerThread = HandlerThread("ImageSliderPromo")
         handlerThread.start()
 
+        var currentView = 0
         handler = Handler(handlerThread.looper)
         runnable = Runnable {
             if(currentView == imageList.size){
@@ -106,6 +108,13 @@ class BerandaFragment : Fragment() {
             }
             restaurant.setOnClickListener {
                 findNavController().navigate(R.id.action_berandaFragment_to_restaurantFragment)
+            }
+            beliTiket.setOnClickListener{
+                findNavController().navigate(R.id.action_berandaFragment_to_beliTiketFragment)
+            }
+            vendingMachine.setOnClickListener{
+                val intent = Intent(requireContext(),VendingMachine::class.java)
+                startActivity(intent)
             }
         }
     }
@@ -145,5 +154,14 @@ class BerandaFragment : Fragment() {
         super.onResume()
         getDataAkun()
 
+    }
+
+    private fun stopRunnable(){
+        handler.removeCallbacks(runnable)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopRunnable()
     }
 }

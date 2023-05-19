@@ -51,6 +51,16 @@ class MainActivity : AppCompatActivity() {
         }
         onAction()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val editor:SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putBoolean("Login?",true)
+        editor.putString("email",GlobalData.email_user)
+        editor.putString("password",GlobalData.password)
+        editor.putInt("saldo",GlobalData.saldo)
+        editor.apply()
+    }
     private fun onAction(){
         binding.apply {
             scanner.setOnClickListener {

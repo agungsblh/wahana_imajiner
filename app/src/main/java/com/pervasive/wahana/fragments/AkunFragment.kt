@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,10 +32,9 @@ class AkunFragment : Fragment() {
         _binding = FragmentAkunBinding.inflate(inflater, container, false)
         onAction()
 
-//        sharedPreferences = getS("SHARED_PREF", Context.MODE_PRIVATE)
-        val editor:SharedPreferences.Editor = sharedPreferences.edit()
+
         initData()
-        getDataAkun()
+//        getDataAkun()
 
         return binding.root
     }
@@ -71,17 +71,22 @@ class AkunFragment : Fragment() {
                 }else{
 
                     for (s in 0..response.length()-1){
-                        val job = response.getJSONObject(s)
-                        GlobalData.id_user = job.getInt("id")
-                        GlobalData.nama_user = job.getString("nama")
-                        GlobalData.email_user = job.getString("email")
-                        GlobalData.password= job.getString("password")
-                        GlobalData.no_hp= job.getString("no_hp")
-                        GlobalData.id_riwayat_penyakit = job.getInt("riwayat_penyakit")
-                        GlobalData.tinggi_badan = job.getInt("tinggi_badan")
-                        GlobalData.berat_badan = job.getInt("berat_badan")
-                        GlobalData.saldo = job.getInt("saldo")
-                        GlobalData.detail_riwayat_penyakit = job.getString("nama_penyakit")
+                        try {
+                            val job = response.getJSONObject(s)
+                            GlobalData.id_user = job.getInt("id")
+                            GlobalData.nama_user = job.getString("nama")
+                            GlobalData.email_user = job.getString("email")
+                            GlobalData.password= job.getString("password")
+                            GlobalData.no_hp= job.getString("no_hp")
+                            GlobalData.id_riwayat_penyakit = job.getInt("riwayat_penyakit")
+                            GlobalData.tinggi_badan = job.getInt("tinggi_badan")
+                            GlobalData.berat_badan = job.getInt("berat_badan")
+                            GlobalData.saldo = job.getInt("saldo")
+                            GlobalData.detail_riwayat_penyakit = job.getString("nama_penyakit")
+                        }catch (e:Exception){
+
+                        }
+
                     }
                     try {
                         initData()

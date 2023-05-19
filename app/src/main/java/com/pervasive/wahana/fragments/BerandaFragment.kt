@@ -87,9 +87,9 @@ class BerandaFragment : Fragment() {
                 currentView = 0
             }
             binding.viewPager.currentItem = currentView++
-            handler.postDelayed(runnable,1500)
+            handler.postDelayed(runnable,4000)
         }
-        handler.postDelayed(runnable,1500)
+        handler.postDelayed(runnable,4000)
         onAction()
 
         binding.saldo.text = "Rp. "+GlobalData.saldo.toString().reversed().chunked(3).joinToString(".").reversed()

@@ -17,6 +17,8 @@ class LinkApi {
         /////////////////////////SEND
         val link_register_user = link_api+"register_user.php"
         val link_topup = link_api+"top_up.php"
+        val link_create_antrian_wahana = link_api+"create_antrian.php"
+        val link_hapus_antrian = link_api+"hapus_antrian.php"
         /////////////////////////END SEND
 
     }

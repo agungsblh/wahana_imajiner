@@ -18,6 +18,15 @@
             android:layout_gravity="center|start"
             android:layout_width="35dp"
             android:layout_height="35dp"/>
+        <TextView
+            android:text="Wahana"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </FrameLayout>
     <ScrollView
         android:scrollbarSize="0dp"

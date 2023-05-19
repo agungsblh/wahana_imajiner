@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_berandaFragment_to_wahanaFragment"
             app:destination="@id/wahanaFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_restaurantFragment"
+            app:destination="@id/restaurantFragment" />
     </fragment>
     <fragment
         android:id="@+id/akunFragment"
@@ -35,4 +38,9 @@
         android:name="com.pervasive.wahana.fragments.WahanaFragment"
         android:label="fragment_wahana"
         tools:layout="@layout/fragment_wahana" />
+    <fragment
+        android:id="@+id/restaurantFragment"
+        android:name="com.pervasive.wahana.fragments.RestaurantFragment"
+        android:label="fragment_restaurant"
+        tools:layout="@layout/fragment_restaurant" />
 </navigation>

@@ -29,6 +29,9 @@ class BerandaFragment : Fragment() {
             wahana.setOnClickListener {
                 findNavController().navigate(R.id.action_berandaFragment_to_wahanaFragment)
             }
+            restaurant.setOnClickListener {
+                findNavController().navigate(R.id.action_berandaFragment_to_restaurantFragment)
+            }
         }
     }
     private fun getDataAkun(){

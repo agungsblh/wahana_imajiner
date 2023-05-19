@@ -22,4 +22,8 @@
         <item name="endIconTint">@color/hijau</item>
         <item name="startIconTint">@color/black</item>
     </style>
+    <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

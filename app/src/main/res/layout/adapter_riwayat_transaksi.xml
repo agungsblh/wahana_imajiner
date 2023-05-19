@@ -19,7 +19,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img"
             app:shapeAppearance="@style/Circular"
-            android:src="@color/black"
+            android:src="@drawable/topup_lv4"
             android:layout_gravity="center"
             android:layout_width="42dp"
             android:layout_height="42dp"/>

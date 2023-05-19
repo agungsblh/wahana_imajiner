@@ -41,7 +41,9 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.berandaFragment
-                ||destination.id == R.id.akunFragment) {
+                ||destination.id == R.id.akunFragment
+                ||destination.id == R.id.riwayatTransaksiFragment
+                ||destination.id == R.id.riwayatTiketFragment) {
                 binding.bottomAppBar.visibility = View.VISIBLE
                 binding.scanner.visibility = View.VISIBLE
             } else {

@@ -22,6 +22,12 @@
         <action
             android:id="@+id/action_berandaFragment_to_restaurantFragment"
             app:destination="@id/restaurantFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_riwayatTransaksiFragment"
+            app:destination="@id/riwayatTransaksiFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_riwayatTiketFragment"
+            app:destination="@id/riwayatTiketFragment" />
     </fragment>
     <fragment
         android:id="@+id/akunFragment"
@@ -43,4 +49,14 @@
         android:name="com.pervasive.wahana.fragments.RestaurantFragment"
         android:label="fragment_restaurant"
         tools:layout="@layout/fragment_restaurant" />
+    <fragment
+        android:id="@+id/riwayatTransaksiFragment"
+        android:name="com.pervasive.wahana.fragments.RiwayatTransaksiFragment"
+        android:label="fragment_riwayat_transaksi"
+        tools:layout="@layout/fragment_riwayat_transaksi" />
+    <fragment
+        android:id="@+id/riwayatTiketFragment"
+        android:name="com.pervasive.wahana.fragments.RiwayatTiketFragment"
+        android:label="fragment_riwayat_tiket"
+        tools:layout="@layout/fragment_riwayat_tiket" />
 </navigation>

@@ -87,7 +87,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_semibold"
                 android:singleLine="true"
-                android:text="Batal"
+                android:text="Yakin"
                 android:textAllCaps="false"
                 android:textSize="12sp"
                 app:backgroundTint="@color/hijau" />

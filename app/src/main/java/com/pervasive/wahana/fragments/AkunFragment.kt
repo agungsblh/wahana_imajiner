@@ -1,6 +1,8 @@
 package com.pervasive.wahana.fragments
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +15,7 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.pervasive.wahana.MainActivity
 import com.pervasive.wahana.R
+import com.pervasive.wahana.activities.LoginActivity
 import com.pervasive.wahana.databinding.FragmentAkunBinding
 import com.pervasive.wahana.databinding.FragmentBerandaBinding
 import com.pervasive.wahana.utils.GlobalData
@@ -23,10 +26,13 @@ import com.pervasive.wahana.utils.LoadingDialogFrg
 class AkunFragment : Fragment() {
     private var _binding : FragmentAkunBinding?= null
     private val binding get() = _binding!!
+    lateinit var sharedPreferences: SharedPreferences
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentAkunBinding.inflate(inflater, container, false)
         onAction()
 
+//        sharedPreferences = getS("SHARED_PREF", Context.MODE_PRIVATE)
+        val editor:SharedPreferences.Editor = sharedPreferences.edit()
         initData()
         getDataAkun()
 
@@ -34,7 +40,12 @@ class AkunFragment : Fragment() {
     }
     private fun onAction(){
         binding.apply {
-
+            logout.setOnClickListener {
+                val i = Intent(requireContext(), LoginActivity::class.java)
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(i)
+            }
         }
     }
     private fun initData(){

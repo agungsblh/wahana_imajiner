@@ -9,10 +9,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-
-
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
 
     <application
         android:allowBackup="true"
@@ -24,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wahana"
         tools:targetApi="31">
+        <activity
+            android:name=".VendingMachine"
+            android:exported="false" />
         <activity
             android:name=".activities.ScannerActivity"
             android:exported="false" />

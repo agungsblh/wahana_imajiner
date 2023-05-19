@@ -1,6 +1,7 @@
 package com.pervasive.wahana.activities
 
 import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -39,7 +40,17 @@ class ScannerActivity : AppCompatActivity() {
             runOnUiThread {
                 Toast.makeText(this, "Scan: ${it.text}", Toast.LENGTH_LONG).show()
                 /////////////////////
+                if (it.text.toString().length==10){
+                    when(it.text){
+                        "MSK-123-WH"->{
 
+                        }
+                        "WHN-001-RH"->{
+                            val i = Intent(this,WahanaScanningActivity::class.java)
+                            startActivity(i)
+                        }
+                    }
+                }
                 //action
             }
         }

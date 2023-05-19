@@ -62,6 +62,7 @@ class BerandaFragment : Fragment() {
                         GlobalData.berat_badan = job.getInt("berat_badan")
                         GlobalData.saldo = job.getInt("saldo")
                         GlobalData.detail_riwayat_penyakit = job.getString("nama_penyakit")
+                        binding.saldo.text = "Rp. "+GlobalData.saldo.toString().reversed().chunked(3).joinToString(".").reversed()
                     }
                 }
             },
@@ -75,5 +76,6 @@ class BerandaFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         getDataAkun()
+
     }
 }

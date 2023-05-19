@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.WahanaFragment">
-
     <FrameLayout
         android:background="@color/hijau"
         app:backgroundTint="@color/hijau"
@@ -20,17 +19,81 @@
             android:layout_width="35dp"
             android:layout_height="35dp"/>
     </FrameLayout>
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
+        android:scrollbarSize="0dp"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="50dp"
-            android:layout_gravity="center"
-            android:id="@+id/carouselRecyclerview"/>
-    </LinearLayout>
+            android:layout_height="wrap_content">
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50dp"
+                android:layout_gravity="center"
+                android:id="@+id/carouselRecyclerview"/>
+            <LinearLayout
+                android:id="@+id/wahana_rumah_hantu"
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Rumah Hantu"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_marginTop="6dp"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/syarat_jantung"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"/>
+                        <TextView
+                            android:layout_gravity="center"
+                            android:text="Tidak berpenyakit Jantung"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:text="Nikmati keseruan Ruham Hantu, berpetualang di dalam rangkaian wahana yang terinspirasi oleh hantu-hantu populer didunia. Dilengkapi dengan berbagai macam jenis hantu dan boneka yang akan selalu menemanimu. Sebuah pengalaman seru yang tidak hanya menyenangkan untuk anak-anak, tapi juga untuk Anda yang berjiwa muda."
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins"
+                    android:justificationMode="inter_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

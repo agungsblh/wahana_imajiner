@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.get
+import com.jackandphantom.carouselrecyclerview.CarouselLayoutManager
 import com.pervasive.wahana.R
 import com.pervasive.wahana.adapter.WahanaAdapter
 import com.pervasive.wahana.databinding.FragmentAkunBinding
@@ -31,6 +34,21 @@ class WahanaFragment : Fragment() {
             carouselRecyclerview.set3DItem(true)
             carouselRecyclerview.setAlpha(true)
             carouselRecyclerview.setInfinite(true)
+            wahanaRumahHantu.visibility = View.VISIBLE
+
+            carouselRecyclerview.setItemSelectListener(object : CarouselLayoutManager.OnSelected {
+                override fun onItemSelected(position: Int) {
+                    //Center item
+                    if (position==0){
+                        wahanaRumahHantu.visibility = View.VISIBLE
+                    }else if(position==1){
+                        wahanaRumahHantu.visibility = View.GONE
+                    }else if(position==2){
+                        wahanaRumahHantu.visibility = View.GONE
+                    }
+
+                }
+            })
 
         }
 

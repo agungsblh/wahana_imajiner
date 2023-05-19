@@ -41,10 +41,16 @@ class WahanaFragment : Fragment() {
                     //Center item
                     if (position==0){
                         wahanaRumahHantu.visibility = View.VISIBLE
+                        wahanaRollerCoaster.visibility = View.GONE
+                        wahanaKomediPutar.visibility = View.GONE
                     }else if(position==1){
                         wahanaRumahHantu.visibility = View.GONE
+                        wahanaRollerCoaster.visibility = View.VISIBLE
+                        wahanaKomediPutar.visibility = View.GONE
                     }else if(position==2){
                         wahanaRumahHantu.visibility = View.GONE
+                        wahanaRollerCoaster.visibility = View.GONE
+                        wahanaKomediPutar.visibility = View.VISIBLE
                     }
 
                 }
@@ -52,6 +58,7 @@ class WahanaFragment : Fragment() {
 
         }
 
+        onAction()
 
         return binding.root
     }

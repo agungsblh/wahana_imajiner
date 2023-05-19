@@ -78,7 +78,9 @@
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <LinearLayout
@@ -87,8 +89,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <TextView
-                                android:layout_weight="1"
+                                android:layout_weight="1.5"
                                 android:text="Thrill"
+                                android:layout_gravity="end"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp"
                                 android:textSize="12sp"
                                 android:textColor="@color/black"
                                 android:fontFamily="@font/poppins_semibold"
@@ -96,7 +101,8 @@
                                 android:layout_height="wrap_content"/>
                             <LinearLayout
                                 android:weightSum="1"
-                                android:layout_weight="1"
+                                android:layout_weight="0.5"
+                                android:layout_marginEnd="20dp"
                                 android:background="@drawable/rounded_edittext"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp">
@@ -118,16 +124,366 @@
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:weightSum="2"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="1.5"
+                                android:text="Speed"
+                                android:layout_gravity="end"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:weightSum="1"
+                                android:layout_marginEnd="20dp"
+                                android:layout_weight="0.5"
+                                android:background="@drawable/rounded_edittext"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp">
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.9"
+                                    app:shapeAppearance="@style/RoundedSquare_20"
+                                    android:src="@color/hijau"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.1"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:shapeAppearance="@style/RoundedSquare_40"
+                                    android:src="@color/white"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
                 <TextView
                     android:text="Nikmati keseruan Rumah Hantu, berpetualang di dalam rangkaian wahana yang terinspirasi oleh hantu-hantu populer didunia. Dilengkapi dengan berbagai macam jenis hantu dan boneka yang akan selalu menemanimu. Sebuah pengalaman seru yang tidak hanya menyenangkan untuk anak-anak, tapi juga untuk Anda yang berjiwa muda."
                     android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/poppins"
                     android:justificationMode="inter_word"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/wahana_roller_coaster"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Roller Coaster"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_marginTop="6dp"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/syarat_jantung"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"/>
+                        <TextView
+                            android:layout_gravity="center"
+                            android:text="Tidak berpenyakit Jantung"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:weightSum="2"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="1.5"
+                                android:text="Thrill"
+                                android:layout_gravity="end"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:weightSum="1"
+                                android:layout_weight="0.5"
+                                android:layout_marginEnd="20dp"
+                                android:background="@drawable/rounded_edittext"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp">
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.5"
+                                    app:shapeAppearance="@style/RoundedSquare_20"
+                                    android:src="@color/hijau"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.5"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:shapeAppearance="@style/RoundedSquare_40"
+                                    android:src="@color/white"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:weightSum="2"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="1.5"
+                                android:text="Speed"
+                                android:layout_gravity="end"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:weightSum="1"
+                                android:layout_marginEnd="20dp"
+                                android:layout_weight="0.5"
+                                android:background="@drawable/rounded_edittext"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp">
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.1"
+                                    app:shapeAppearance="@style/RoundedSquare_20"
+                                    android:src="@color/hijau"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.9"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:shapeAppearance="@style/RoundedSquare_40"
+                                    android:src="@color/white"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:text="Kereta luncur adalah wahana permainan berupa kereta yang dipacu dengan kecepatan tinggi pada jalur rel khusus, biasanya terletak di atas tanah yang memiliki ketinggian yang berbeda-beda. Rel ini ditopang oleh rangka baja yang disusun sedemikian rupa."
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins"
+                    android:justificationMode="inter_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/wahana_komedi_putar"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Komedi Putar"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:layout_marginTop="6dp"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/syarat_jantung"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"/>
+                        <TextView
+                            android:layout_gravity="center"
+                            android:text="Tidak berpenyakit Jantung"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:weightSum="2"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="1.5"
+                                android:text="Thrill"
+                                android:layout_gravity="end"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:weightSum="1"
+                                android:layout_weight="0.5"
+                                android:layout_marginEnd="20dp"
+                                android:background="@drawable/rounded_edittext"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp">
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.8"
+                                    app:shapeAppearance="@style/RoundedSquare_20"
+                                    android:src="@color/hijau"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.2"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:shapeAppearance="@style/RoundedSquare_40"
+                                    android:src="@color/white"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:weightSum="2"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="1.5"
+                                android:text="Speed"
+                                android:layout_gravity="end"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp"
+                                android:textSize="12sp"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:weightSum="1"
+                                android:layout_marginEnd="20dp"
+                                android:layout_weight="0.5"
+                                android:background="@drawable/rounded_edittext"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp">
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.5"
+                                    app:shapeAppearance="@style/RoundedSquare_20"
+                                    android:src="@color/hijau"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:layout_weight="0.5"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    app:shapeAppearance="@style/RoundedSquare_40"
+                                    android:src="@color/white"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:text="Kereta luncur adalah wahana permainan berupa kereta yang dipacu dengan kecepatan tinggi pada jalur rel khusus, biasanya terletak di atas tanah yang memiliki ketinggian yang berbeda-beda. Rel ini ditopang oleh rangka baja yang disusun sedemikian rupa."
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins"
+                    android:justificationMode="inter_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

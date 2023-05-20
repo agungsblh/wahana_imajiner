@@ -82,7 +82,8 @@ class WahanaScanningActivity : AppCompatActivity() {
                         if(response.equals("Sudah discan")){
 
                             try {
-                                showDialogComplete("Masuk","Selamat menikmati wahana kami, semoga menyenangkan")
+                                GlobalData.status_available = 0
+                                showDialogComplete("Masuk","Selamat menikmati wahana kami, semoga menyenangkan",R.raw.anim_complete)
                                 handler.removeCallbacks(this)
                             }catch (ex:Exception){
 
@@ -110,7 +111,8 @@ class WahanaScanningActivity : AppCompatActivity() {
                 loading.isDismiss()
                 if(response.equals("Sukses")){
                     try {
-                        showDialogComplete("Antrian dibatalkan","Silahkan meninggalkan barisan antrian")
+                        GlobalData.status_available = 0
+                        showDialogComplete("Antrian dibatalkan","Silahkan meninggalkan barisan antrian",R.raw.anim_complete)
                     }catch (ex:Exception){
 
                     }
@@ -125,7 +127,7 @@ class WahanaScanningActivity : AppCompatActivity() {
             })
         request.add(stringRequest)
     }
-    private fun showDialogComplete(judulnya:String,isinya:String){
+    private fun showDialogComplete(judulnya:String,isinya:String,anims:Int){
         val view = View.inflate(this, R.layout.dialog_anim_ok,null)
         val builder = AlertDialog.Builder(this)
         builder.setView(view)
@@ -136,7 +138,7 @@ class WahanaScanningActivity : AppCompatActivity() {
         val btn_yes = view.findViewById<Button>(R.id.btn_ok)
         val anim = view.findViewById<LottieAnimationView>(R.id.anim)
 
-        anim.setAnimation(R.raw.anim_complete)
+        anim.setAnimation(anims)
         anim.loop(false)
         judul.text = judulnya
         isi.text = isinya
@@ -148,6 +150,7 @@ class WahanaScanningActivity : AppCompatActivity() {
             dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
             btn_yes.setOnClickListener {
+                dialog.dismiss()
                 finish()
             }
         }catch (e:java.lang.Exception){
@@ -174,8 +177,7 @@ class WahanaScanningActivity : AppCompatActivity() {
                         finish()
                     }
                 }else{
-                    Toast.makeText(this,response.toString(),Toast.LENGTH_SHORT).show()
-                    finish()
+                    showDialogComplete("Ooops","Syarat untuk memasuki wahana tidak terpenuhi",R.raw.oops)
                 }
             },
             { error ->

@@ -164,6 +164,7 @@ class BerandaFragment : Fragment() {
             { response ->
                 if(response.equals("Menunggu Antrian Wahana")){
                     try {
+                        GlobalData.status_available = 1
                         binding.frameStatusUser.visibility = View.VISIBLE
                         binding.status.text = response.toString()
                         binding.imageStatus.setAnimation(R.raw.menunggu_antrian)

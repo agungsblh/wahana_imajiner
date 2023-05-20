@@ -1,14 +1,18 @@
 package com.pervasive.wahana
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
@@ -67,9 +71,43 @@ class MainActivity : AppCompatActivity() {
     private fun onAction(){
         binding.apply {
             scanner.setOnClickListener {
-                val intent = Intent(this@MainActivity,ScannerActivity::class.java)
-                startActivity(intent)
+                if (GlobalData.status_available==1){
+                    showDialogWarning()
+                }else{
+                    val intent = Intent(this@MainActivity,ScannerActivity::class.java)
+                    startActivity(intent)
+                }
+
             }
+        }
+    }
+    private fun showDialogWarning(){
+        val view = View.inflate(this, R.layout.dialog_anim_ok,null)
+        val builder = AlertDialog.Builder(this)
+        builder.setView(view)
+        val dialog = builder.create()
+
+        val judul = view.findViewById<TextView>(R.id.judul)
+        val isi = view.findViewById<TextView>(R.id.isi)
+        val btn_yes = view.findViewById<Button>(R.id.btn_ok)
+        val anim = view.findViewById<LottieAnimationView>(R.id.anim)
+
+        anim.setAnimation(R.raw.oops)
+        anim.loop(false)
+        judul.text = "Ooop"
+        isi.text = "Masih ada transaksi lain yang sedang berjalan"
+
+        try {
+            dialog.show()
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            btn_yes.setOnClickListener {
+                dialog.dismiss()
+            }
+        }catch (e:java.lang.Exception){
+
         }
     }
     override fun onSupportNavigateUp(): Boolean {

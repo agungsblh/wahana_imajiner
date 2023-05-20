@@ -66,6 +66,13 @@ class ScannerActivity : AppCompatActivity() {
                             startActivity(i)
                             finish()
                         }
+                        "R01-001-RA"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+//                            i.putExtra("state","CREATE")
+//                            i.putExtra("kode","WHN-003-KP")
+                            startActivity(i)
+                            finish()
+                        }
                     }
                 }
                 //action

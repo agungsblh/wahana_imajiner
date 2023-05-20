@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -55,6 +56,40 @@ class WahanaScanningActivity : AppCompatActivity() {
             batalkanAntrian()
         }
 
+        check_tiket()
+
+    }
+    private fun check_tiket(){
+        val handler = Handler()
+        val delay = 3000 //milliseconds
+        handler.postDelayed(object :Runnable{
+            override fun run() {
+                var url:String = LinkApi.link_cek_tiket_antrian_wahana
+                var request: RequestQueue = Volley.newRequestQueue(this@WahanaScanningActivity)
+                var stringRequest = StringRequest(
+                    Request.Method.GET,url+"?barcode="+binding.kode.text.toString(),
+                    { response ->
+
+                        if(response.equals("Sudah discan")){
+
+                            try {
+                                showDialogComplete("Masuk","Selamat menikmati wahana kami, semoga menyenangkan")
+                                handler.removeCallbacks(this)
+                            }catch (ex:Exception){
+
+                            }
+
+                        }else{
+                            //loop
+                            handler.postDelayed(this,delay.toLong())
+                        }
+                    },
+                    { error ->
+                        Toast.makeText(this@WahanaScanningActivity,"Terjadi kesalahan sistem, coba lagi",Toast.LENGTH_SHORT).show()
+                    })
+                request.add(stringRequest)
+            }
+        },delay.toLong())
     }
     private fun batalkanAntrian(){
         loading.startLoading()

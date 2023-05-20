@@ -11,6 +11,7 @@ class LinkApi {
         val link_get_penyakit = link_api+"get_list_penyakit.php"
         val link_get_data_akun = link_api+"get_data_akun.php"
         val link_get_list_riwayat_transaksi = link_api+"get_list_riwayat_transaksi.php"
+        val link_cek_tiket_antrian_wahana = link_api+"cek_tiket_antrian_wahana.php"
         ////////////////////END GET
 
 

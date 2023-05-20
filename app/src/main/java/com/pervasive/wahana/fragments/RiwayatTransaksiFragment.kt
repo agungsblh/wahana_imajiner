@@ -20,7 +20,6 @@ import com.pervasive.wahana.utils.GlobalData
 import com.pervasive.wahana.utils.LinkApi
 import com.pervasive.wahana.utils.LoadingDialogFrg
 
-
 class RiwayatTransaksiFragment : Fragment() {
     private var _binding : FragmentRiwayatTransaksiBinding?= null
     private val binding get() = _binding!!

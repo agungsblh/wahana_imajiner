@@ -1,7 +1,9 @@
 package com.pervasive.wahana.activities
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -29,35 +31,42 @@ import com.pervasive.wahana.utils.LoadingDialogFrg
 class WahanaScanningActivity : AppCompatActivity() {
     private lateinit var binding:ActivityWahanaScanningBinding
     val loading = LoadingDialog(this)
+    lateinit var sharedPreferences: SharedPreferences
+
     //var kode = String()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWahanaScanningBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        sharedPreferences = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
         //val intent = intent
-        var kode_wahana = intent.getStringExtra("kode")
-        when(kode_wahana){
-            "WHN-001-RH"->{
-                binding.namaWahana.text = "Rumah Hantu"
-                createAntrian(1)
+        if (intent.getStringExtra("state").equals("CREATE")){
+            var kode_wahana = intent.getStringExtra("kode")
+            when(kode_wahana){
+                "WHN-001-RH"->{
+                    binding.namaWahana.text = "Rumah Hantu"
+                    createAntrian(1)
+                }
+                "WHN-002-RC"->{
+                    binding.namaWahana.text = "Roller Coaster"
+                    createAntrian(2)
+                }
+                "WHN-003-KP"->{
+                    binding.namaWahana.text = "Komedi Putar"
+                    createAntrian(3)
+                }
             }
-            "WHN-002-RC"->{
-                binding.namaWahana.text = "Roller Coaster"
-                createAntrian(2)
-            }
-            "WHN-003-KP"->{
-                binding.namaWahana.text = "Komedi Putar"
-                createAntrian(3)
-            }
+
+        }else{
+            // cek barcode
+            binding.namaWahana.text = "Wahana"
+            writeCode(intent.getStringExtra("KODE").toString())
         }
-        //button
+
         binding.batalkanAntrian.setOnClickListener {
             batalkanAntrian()
         }
-
         check_tiket()
-
     }
     private fun check_tiket(){
         val handler = Handler()
@@ -156,6 +165,9 @@ class WahanaScanningActivity : AppCompatActivity() {
                 loading.isDismiss()
                 if(response.toString().length==10){
                     try {
+                        val editor:SharedPreferences.Editor = sharedPreferences.edit()
+                        editor.putString("barcode_antrian",response.toString())
+                        editor.apply()
                         writeCode(response.toString())
                     }catch (ex:Exception){
                         Toast.makeText(this,"Terjadi Kesalahan",Toast.LENGTH_SHORT).show()

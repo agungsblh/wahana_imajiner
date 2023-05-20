@@ -47,18 +47,21 @@ class ScannerActivity : AppCompatActivity() {
                         }
                         "WHN-001-RH"->{
                             val i = Intent(this,WahanaScanningActivity::class.java)
+                            i.putExtra("state","CREATE")
                             i.putExtra("kode","WHN-001-RH")
                             startActivity(i)
                             finish()
                         }
                         "WHN-002-RC"->{
                             val i = Intent(this,WahanaScanningActivity::class.java)
+                            i.putExtra("state","CREATE")
                             i.putExtra("kode","WHN-002-RC")
                             startActivity(i)
                             finish()
                         }
                         "WHN-003-KP"->{
                             val i = Intent(this,WahanaScanningActivity::class.java)
+                            i.putExtra("state","CREATE")
                             i.putExtra("kode","WHN-003-KP")
                             startActivity(i)
                             finish()

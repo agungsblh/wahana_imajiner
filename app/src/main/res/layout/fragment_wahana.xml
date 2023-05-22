@@ -64,30 +64,96 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_marginTop="6dp"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal"
+                    <androidx.coordinatorlayout.widget.CoordinatorLayout
                         android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:clipToPadding="false"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_gravity="center"
-                            android:src="@drawable/syarat_jantung"
+                            android:elevation="6dp"
+                            android:layout_gravity="end"
+                            android:cropToPadding="false"
+                            android:layout_marginTop="-22dp"
+                            android:src="@drawable/labu"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"/>
+                        <ImageView
+                            android:elevation="6dp"
+                            android:layout_gravity="start"
+                            android:cropToPadding="false"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/bat"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"/>
+                        <ImageView
+                            android:elevation="6dp"
+                            android:layout_gravity="bottom|end"
+                            android:cropToPadding="false"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/zombie_hand"
                             android:layout_width="50dp"
                             android:layout_height="50dp"/>
-                        <TextView
-                            android:layout_gravity="center"
-                            android:text="Tidak berpenyakit Jantung"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                        <androidx.cardview.widget.CardView
+                            android:elevation="5dp"
+                            app:cardElevation="5dp"
+                            app:cardMaxElevation="5dp"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_margin="20dp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_gravity="center"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/penyakit_jantung"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"/>
+                                    <TextView
+                                        android:layout_gravity="center"
+                                        android:text="Tidak mendertita penyakit jantung"
+                                        android:textColor="@color/black"
+                                        android:textSize="14sp"
+                                        android:fontFamily="@font/poppins_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_gravity="center"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/tiket"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"/>
+                                    <TextView
+                                        android:layout_gravity="center"
+                                        android:text="Hanya tersedia dipaket full wahana"
+                                        android:textColor="@color/black"
+                                        android:textSize="14sp"
+                                        android:fontFamily="@font/poppins_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:layout_width="match_parent"
@@ -192,7 +258,6 @@
                     android:justificationMode="inter_word"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/wahana_roller_coaster"
@@ -215,27 +280,78 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_marginTop="6dp"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal"
+                    <androidx.coordinatorlayout.widget.CoordinatorLayout
                         android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:clipToPadding="false"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_gravity="center"
-                            android:src="@drawable/syarat_jantung"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"/>
-                        <TextView
-                            android:layout_gravity="center"
-                            android:text="Tidak berpenyakit Jantung"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                            android:elevation="6dp"
+                            android:layout_gravity="end"
+                            android:cropToPadding="false"
+                            android:layout_marginTop="-22dp"
+                            android:src="@drawable/roller"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:elevation="5dp"
+                            app:cardElevation="5dp"
+                            app:cardMaxElevation="5dp"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_margin="20dp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_gravity="center"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/penyakit_jantung"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"/>
+                                    <TextView
+                                        android:layout_gravity="center"
+                                        android:text="Tidak mendertita penyakit jantung"
+                                        android:textColor="@color/black"
+                                        android:textSize="14sp"
+                                        android:fontFamily="@font/poppins_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_gravity="center"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/tiket"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"/>
+                                    <TextView
+                                        android:layout_gravity="center"
+                                        android:text="Hanya tersedia dipaket full wahana"
+                                        android:textColor="@color/black"
+                                        android:textSize="14sp"
+                                        android:fontFamily="@font/poppins_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_marginTop="20dp"
@@ -365,28 +481,58 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:gravity="center"
-                        android:layout_marginTop="6dp"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal"
+                    <androidx.coordinatorlayout.widget.CoordinatorLayout
                         android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:clipToPadding="false"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_gravity="center"
-                            android:src="@drawable/syarat_jantung"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"/>
-                        <TextView
-                            android:layout_gravity="center"
-                            android:text="Tidak berpenyakit Jantung"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                            android:elevation="6dp"
+                            android:layout_gravity="end"
+                            android:cropToPadding="false"
+                            android:layout_marginTop="-22dp"
+                            android:src="@drawable/komedi_putar"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:elevation="5dp"
+                            app:cardElevation="5dp"
+                            app:cardMaxElevation="5dp"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_margin="20dp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_gravity="center"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/tiket"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"/>
+                                    <TextView
+                                        android:layout_gravity="center"
+                                        android:text="Tersedia di paket regular"
+                                        android:textColor="@color/black"
+                                        android:textSize="14sp"
+                                        android:fontFamily="@font/poppins_semibold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_marginTop="20dp"
@@ -495,7 +641,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleFitur"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:itemCount="3"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:clipToPadding="false"
+                android:layout_marginBottom="30dp"
+                tools:listitem="@layout/adapter_feature_wahana"/>
         </LinearLayout>
+
     </ScrollView>
 
 

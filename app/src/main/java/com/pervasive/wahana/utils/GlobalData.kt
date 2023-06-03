@@ -16,8 +16,6 @@ class GlobalData {
         var berat_badan:Int = 0
 
 
-
-
         var status_available:Int = 0
 
     }

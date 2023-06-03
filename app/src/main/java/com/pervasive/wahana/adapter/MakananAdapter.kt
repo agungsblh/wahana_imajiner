@@ -7,37 +7,38 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.pervasive.wahana.R
+import com.pervasive.wahana.activities.RestaurantScanningActivity
 import com.pervasive.wahana.model.MakananModel
 import com.pervasive.wahana.model.OrderModel
+import com.pervasive.wahana.utils.Converter
 
-class MakananAdapter(var context:Context, var list:ArrayList<MakananModel>):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
+class MakananAdapter(var context:Context, private val restoActivity: RestaurantScanningActivity, var list:ArrayList<MakananModel>, private val addToCartListener: AddToCartListener):RecyclerView.Adapter<MakananAdapter.MakananViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MakananViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.adapter_makanan, parent, false)
+        return MakananViewHolder(view)
+    }
+    inner class MakananViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val btn_add: Button = itemView.findViewById(R.id.add)
         val nama_makanan: TextView = itemView.findViewById(R.id.nama_menu)
         val harga_makanan: TextView = itemView.findViewById(R.id.harga)
-        val btn_add: Button = itemView.findViewById(R.id.add)
-        fun adapter(namaMananan:String,hargaMakanan:String){
-            nama_makanan.text = namaMananan
-            harga_makanan.text = "Rp. " + hargaMakanan.reversed().chunked(3).joinToString(".").reversed()
-            btn_add.setOnClickListener {
+    }
 
-            }
+    override fun onBindViewHolder(holder: MakananViewHolder, position: Int) {
+        val product = list[position]
+        holder.nama_makanan.text = product.nama
+        holder.harga_makanan.text = Converter.mataUangRupiah(product.harga)
+        holder.btn_add.setOnClickListener {
+            addToCartListener.onAddToCartClicked(product)
+            restoActivity.updateTotalHarga()
         }
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view:View = LayoutInflater.from(context).inflate(R.layout.adapter_makanan,parent,false)
-        return MakananAdapter.MyViewHolder(view)
-    }
-
     override fun getItemCount(): Int = list.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as MakananAdapter.MyViewHolder).adapter(list[position].nama,list[position].harga.toString())
-    }
-
-    private fun addToOrder(makananModel:MakananModel){
-
+    interface AddToCartListener {
+        fun onAddToCartClicked(makanan: MakananModel)
     }
 
 }

@@ -6,6 +6,7 @@ class MakananModel {
     var harga:Int
     var stok:Int
     var kategori:String
+    var jumlah:Int = 1
 
     constructor(id: Int, nama: String, harga: Int, stok: Int, kategori: String) {
         this.id = id

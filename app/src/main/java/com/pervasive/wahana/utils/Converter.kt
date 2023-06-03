@@ -15,5 +15,9 @@ object Converter {
 
         return "$tahun_string-$bulan_strings-$tanggal_string"
     }
+    fun mataUangRupiah(uang:Int):String{
+
+        return "Rp. "+uang.toString().reversed().chunked(3).joinToString(".").reversed()
+    }
 
 }

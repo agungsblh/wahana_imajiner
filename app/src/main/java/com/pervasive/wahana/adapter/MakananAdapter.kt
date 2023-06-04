@@ -14,7 +14,7 @@ import com.pervasive.wahana.model.MakananModel
 import com.pervasive.wahana.model.OrderModel
 import com.pervasive.wahana.utils.Converter
 
-class MakananAdapter(var context:Context, private val restoActivity: RestaurantScanningActivity, var list:ArrayList<MakananModel>, private val addToCartListener: AddToCartListener):RecyclerView.Adapter<MakananAdapter.MakananViewHolder>() {
+class MakananAdapter(var context:Context, private val restoActivity: RestaurantScanningActivity, var list:ArrayList<MakananModel>, private val addToCartListener: AddToCartListener,private val keranjangLainAdapter: CartMakananAdapter):RecyclerView.Adapter<MakananAdapter.MakananViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MakananViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.adapter_makanan, parent, false)
@@ -32,13 +32,20 @@ class MakananAdapter(var context:Context, private val restoActivity: RestaurantS
         holder.harga_makanan.text = Converter.mataUangRupiah(product.harga)
         holder.btn_add.setOnClickListener {
             addToCartListener.onAddToCartClicked(product)
+            notifyDataSetChanged()
             restoActivity.updateTotalHarga()
+            panggilFungsiAdapterLain()
+
         }
+    }
+    private fun panggilFungsiAdapterLain() {
+        keranjangLainAdapter.updateTotalHarga()
     }
     override fun getItemCount(): Int = list.size
 
     interface AddToCartListener {
         fun onAddToCartClicked(makanan: MakananModel)
+
     }
 
 }

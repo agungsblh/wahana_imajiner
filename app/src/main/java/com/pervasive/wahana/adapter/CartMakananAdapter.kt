@@ -29,12 +29,11 @@ class CartMakananAdapter(var context:Context,private val makananItems: MutableLi
         holder.kurangButton.setOnClickListener {
             if (cartItem.jumlah > 1) {
                 cartItem.jumlah--
-                notifyDataSetChanged()
+                updateTotalHarga()
             } else {
                 makananItems.removeAt(position)
+                updateTotalHarga()
             }
-            updateTotalHarga()
-
             notifyDataSetChanged()
         }
 
@@ -44,7 +43,7 @@ class CartMakananAdapter(var context:Context,private val makananItems: MutableLi
             notifyDataSetChanged()
         }
     }
-    private fun updateTotalHarga() {
+    public fun updateTotalHarga() {
         totalHarga = 0
         for (produk in makananItems) {
             totalHarga += produk.harga * produk.jumlah

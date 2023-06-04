@@ -69,7 +69,24 @@ class ScannerActivity : AppCompatActivity() {
                         "R01-001-RA"->{
                             val i = Intent(this,RestaurantScanningActivity::class.java)
 //                            i.putExtra("state","CREATE")
-                            i.putExtra("resto","1")
+                            i.putExtra("resto",1)
+                            i.putExtra("meja",1)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R02-001-RD"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+//                            i.putExtra("state","CREATE")
+                            i.putExtra("resto",2)
+                            i.putExtra("meja",1)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R01-002-RA"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+//                            i.putExtra("state","CREATE")
+                            i.putExtra("resto",1)
+                            i.putExtra("meja",2)
                             startActivity(i)
                             finish()
                         }

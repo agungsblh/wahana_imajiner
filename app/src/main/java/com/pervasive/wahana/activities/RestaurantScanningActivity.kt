@@ -30,10 +30,19 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
     val loading = LoadingDialog(this)
     private val keranjangList = mutableListOf<MakananModel>()
     private lateinit var keranjangAdapter: CartMakananAdapter
+    //private lateinit var keranjangLainAdapter: CartMakananAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantScanningBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var resto = intent.getIntExtra("resto",1)
+        var meja = intent.getIntExtra("meja",1)
+        if(resto==1){
+            binding.namaResto.text = resources.getString(R.string.nama_resto_1)
+        }else{
+            binding.namaResto.text = resources.getString(R.string.nama_resto_2)
+        }
 
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight=120
@@ -45,8 +54,6 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
         recyclerViewKeranjang.layoutManager = LinearLayoutManager(this)
         keranjangAdapter = CartMakananAdapter(this,keranjangList,this)
         recyclerViewKeranjang.adapter = keranjangAdapter
-
-
 
     }
 
@@ -77,7 +84,7 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
 
                     }
                     try {
-                        var adapterku = MakananAdapter(this,this,listMakanan,this)
+                        var adapterku = MakananAdapter(this,this,listMakanan,this,keranjangAdapter)
                         binding.recyclerMenu.layoutManager = LinearLayoutManager(this,
                             LinearLayoutManager.VERTICAL,false)
                         binding.recyclerMenu.setHasFixedSize(true)
@@ -105,19 +112,22 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
         if (existingProduk != null) {
             // Jika produk sudah ada, tingkatkan jumlahnya
             existingProduk.jumlah++
+            keranjangAdapter.notifyDataSetChanged()
             updateTotalHarga()
         } else {
             // Jika produk belum ada, tambahkan ke dalam keranjang
             keranjangList.add(product)
+            keranjangAdapter.notifyDataSetChanged()
             updateTotalHarga()
         }
 
 
         // Refresh RecyclerView keranjang
-        keranjangAdapter.notifyDataSetChanged()
+        //keranjangAdapter.notifyDataSetChanged()
+
 
     }
-    private fun updateTotalHarga(){
+    public fun updateTotalHarga(){
         var totalHarga = keranjangAdapter.totalHarga
         binding.total.text = "Total: "+Converter.mataUangRupiah(totalHarga)
     }

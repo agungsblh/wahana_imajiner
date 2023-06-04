@@ -68,7 +68,6 @@ class ScannerActivity : AppCompatActivity() {
                         }
                         "R01-001-RA"->{
                             val i = Intent(this,RestaurantScanningActivity::class.java)
-//                            i.putExtra("state","CREATE")
                             i.putExtra("resto",1)
                             i.putExtra("meja",1)
                             startActivity(i)
@@ -76,7 +75,6 @@ class ScannerActivity : AppCompatActivity() {
                         }
                         "R02-001-RD"->{
                             val i = Intent(this,RestaurantScanningActivity::class.java)
-//                            i.putExtra("state","CREATE")
                             i.putExtra("resto",2)
                             i.putExtra("meja",1)
                             startActivity(i)
@@ -84,9 +82,57 @@ class ScannerActivity : AppCompatActivity() {
                         }
                         "R01-002-RA"->{
                             val i = Intent(this,RestaurantScanningActivity::class.java)
-//                            i.putExtra("state","CREATE")
                             i.putExtra("resto",1)
                             i.putExtra("meja",2)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R02-002-RD"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+                            i.putExtra("resto",2)
+                            i.putExtra("meja",2)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R01-003-RA"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+                            i.putExtra("resto",1)
+                            i.putExtra("meja",3)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R02-003-RD"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+                            i.putExtra("resto",2)
+                            i.putExtra("meja",3)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R01-004-RA"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+                            i.putExtra("resto",1)
+                            i.putExtra("meja",4)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R02-004-RD"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+                            i.putExtra("resto",2)
+                            i.putExtra("meja",4)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R01-005-RA"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+                            i.putExtra("resto",1)
+                            i.putExtra("meja",5)
+                            startActivity(i)
+                            finish()
+                        }
+                        "R02-005-RD"->{
+                            val i = Intent(this,RestaurantScanningActivity::class.java)
+                            i.putExtra("resto",2)
+                            i.putExtra("meja",5)
                             startActivity(i)
                             finish()
                         }

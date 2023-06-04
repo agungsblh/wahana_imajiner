@@ -1,13 +1,21 @@
 package com.pervasive.wahana.activities
 
+import android.app.AlertDialog
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.pervasive.wahana.R
@@ -43,6 +51,7 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
         }else{
             binding.namaResto.text = resources.getString(R.string.nama_resto_2)
         }
+        onAction(resto,meja)
 
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight=120
@@ -57,12 +66,75 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
 
     }
 
+    private fun onAction(id_resto:Int,id_meja:Int){
+        binding.apply {
+            bayar.setOnClickListener {
+                if (keranjangAdapter.totalHarga==0){
+                    Toast.makeText(this@RestaurantScanningActivity,"Belum ada menu yang dipilih",Toast.LENGTH_SHORT).show()
+                }else{
+                    createPesanan(id_resto,id_meja,keranjangAdapter.totalHarga)
+                }
+            }
+        }
+    }
+    private fun createPesanan(id_resto:Int,id_meja:Int,total:Int){
+        loading.startLoading()
+        var url:String = LinkApi.link_create_orderan_resto
+        var request: RequestQueue = Volley.newRequestQueue(applicationContext)
+        var stringRequest = StringRequest(
+            Request.Method.GET,url+"?id_user="+GlobalData.id_user+"&id_restaurant="+id_resto+"&meja="+id_meja+"&total="+total,
+            { response ->
+                loading.isDismiss()
+                if(response.toString()=="Sukses"){
+                    showDialogComplete("Sukses","Pesanan berhasil dibuat, selamat menikmati makanan kami",R.raw.anim_complete)
+                }else{
+                    showDialogComplete("Ooops",response.toString(),R.raw.oops)
+                }
+            },
+            { error ->
+                Log.d("ErrorApp",error.toString())
+                loading.isDismiss()
+                finish()
 
+            })
+        request.add(stringRequest)
+    }
+    private fun showDialogComplete(judulnya:String,isinya:String,anims:Int){
+        val view = View.inflate(this, R.layout.dialog_anim_ok,null)
+        val builder = AlertDialog.Builder(this)
+        builder.setView(view)
+        val dialog = builder.create()
+
+        val judul = view.findViewById<TextView>(R.id.judul)
+        val isi = view.findViewById<TextView>(R.id.isi)
+        val btn_yes = view.findViewById<Button>(R.id.btn_ok)
+        val anim = view.findViewById<LottieAnimationView>(R.id.anim)
+
+        anim.setAnimation(anims)
+        anim.loop(false)
+        judul.text = judulnya
+        isi.text = isinya
+
+        try {
+            dialog.show()
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            btn_yes.setOnClickListener {
+                dialog.dismiss()
+                finish()
+            }
+        }catch (e:java.lang.Exception){
+
+        }
+
+    }
     private fun getListMakanan(){
         loading.startLoading()
         var queue: RequestQueue = Volley.newRequestQueue(this)
         var reques = JsonArrayRequest(
-            Request.Method.GET, LinkApi.link_get_list_makanan+"?resto="+intent.getStringExtra("resto"),null,
+            Request.Method.GET, LinkApi.link_get_list_makanan+"?resto="+intent.getIntExtra("resto",1),null,
             { response ->
                 loading.isDismiss()
                 if(response.length()==0){

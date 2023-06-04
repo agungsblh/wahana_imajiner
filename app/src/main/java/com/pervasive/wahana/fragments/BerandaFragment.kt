@@ -1,5 +1,6 @@
 package com.pervasive.wahana.fragments
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -12,11 +13,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
@@ -180,10 +184,16 @@ class BerandaFragment : Fragment() {
                     }catch (ex:Exception){
 
                     }
-
                 }else if(response.equals("Menunggu Pembayaran")){
+                    binding.frameStatusUser.visibility = View.VISIBLE
+                    binding.status.text = response.toString()
+                    binding.imageStatus.setAnimation(R.raw.food_carousel)
+                    binding.imageStatus.playAnimation()
+                    binding.klikStatus.setOnClickListener {
 
+                        showDialogBayarOrderResto()
 
+                    }
                 }else{
                     binding.frameStatusUser.visibility = View.GONE
                 }
@@ -192,6 +202,36 @@ class BerandaFragment : Fragment() {
                 Toast.makeText(requireContext(),"Terjadi kesalahan sistem, coba lagi",Toast.LENGTH_SHORT).show()
             })
         request.add(stringRequest)
+    }
+    private fun showDialogBayarOrderResto(){
+        val view = View.inflate(requireContext(), R.layout.dialog_anim_ok,null)
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setView(view)
+        val dialog = builder.create()
+
+        val judul = view.findViewById<TextView>(R.id.judul)
+        val isi = view.findViewById<TextView>(R.id.isi)
+        val btn_yes = view.findViewById<Button>(R.id.btn_ok)
+        val anim = view.findViewById<LottieAnimationView>(R.id.anim)
+
+        anim.setAnimation(R.raw.food_carousel)
+        anim.loop(true)
+        judul.text = "Bayar"
+        isi.text = "Tekan ok untuk membayar tagihan pesanan makanan Anda"
+
+        try {
+            dialog.show()
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            btn_yes.setOnClickListener {
+                dialog.dismiss()
+
+            }
+        }catch (e:java.lang.Exception){
+
+        }
     }
 
     override fun onResume() {

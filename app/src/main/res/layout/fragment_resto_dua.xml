@@ -114,7 +114,7 @@
                         <ImageView
                             android:id="@+id/meja4"
                             android:layout_gravity="center"
-                            android:src="@drawable/restaurant_tidak_tersedia"
+                            android:src="@drawable/restaurant_tersedia"
                             android:layout_width="75dp"
                             android:layout_height="75dp"/>
                         <TextView

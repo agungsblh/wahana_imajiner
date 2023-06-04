@@ -13,7 +13,7 @@ import com.pervasive.wahana.model.CartItem
 import com.pervasive.wahana.model.MakananModel
 import com.pervasive.wahana.utils.Converter
 
-class CartMakananAdapter(var context:Context,private val makananItems: MutableList<MakananModel>,private val restoActivity: RestaurantScanningActivity) :
+class CartMakananAdapter(var context:Context,private val makananItems: MutableList<MakananModel>,private val restoActivity: RestaurantScanningActivity):
     RecyclerView.Adapter<CartMakananAdapter.CartViewHolder>() {
     public var totalHarga: Int = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {

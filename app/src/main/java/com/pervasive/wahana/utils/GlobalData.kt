@@ -17,6 +17,6 @@ class GlobalData {
 
 
         var status_available:Int = 0
-
+        var status_scanner:Int = 0
     }
 }

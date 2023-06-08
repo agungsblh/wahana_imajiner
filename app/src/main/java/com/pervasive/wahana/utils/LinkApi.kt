@@ -24,7 +24,7 @@ class LinkApi {
         val link_create_antrian_wahana = link_api+"create_antrian.php"
         val link_hapus_antrian = link_api+"hapus_antrian.php"
         val link_create_orderan_resto = link_api+"createOrderanResto.php"
-
+        val link_bayar_order_resto = link_api+"bayar_order_resto.php"
         /////////////////////////END SEND
     }
 }

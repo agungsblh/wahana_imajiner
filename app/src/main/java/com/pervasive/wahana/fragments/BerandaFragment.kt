@@ -185,15 +185,15 @@ class BerandaFragment : Fragment() {
 
                     }
                 }else if(response.equals("Menunggu Pembayaran")){
+                    GlobalData.status_available = 1
                     binding.frameStatusUser.visibility = View.VISIBLE
                     binding.status.text = response.toString()
                     binding.imageStatus.setAnimation(R.raw.food_carousel)
                     binding.imageStatus.playAnimation()
                     binding.klikStatus.setOnClickListener {
-
                         showDialogBayarOrderResto()
-
                     }
+
                 }else{
                     binding.frameStatusUser.visibility = View.GONE
                 }
@@ -227,13 +227,71 @@ class BerandaFragment : Fragment() {
 
             btn_yes.setOnClickListener {
                 dialog.dismiss()
+                bayarOrder()
 
             }
         }catch (e:java.lang.Exception){
 
         }
     }
+    private fun bayarOrder(){
+        LoadingDialogFrg.displayLoadingWithText(requireContext(),false)
+        var url:String = LinkApi.link_bayar_order_resto
+        var request: RequestQueue = Volley.newRequestQueue(requireContext())
+        var stringRequest = StringRequest(
+            Request.Method.GET,url+"?id_user="+GlobalData.id_user.toString()+"&email="+GlobalData.email_user+"&password="+GlobalData.password,
+            { response ->
+                LoadingDialogFrg.hideLoading()
+                if(response.equals("Sukses")){
+                    try {
+                        showDialogComplete("Sukses","Saldo kamu telah dikurangi untuk membayar makanan resto",R.raw.anim_complete)
+                        getDataAkun()
+                        GlobalData.status_available = 0
+                    }catch (ex:Exception){
 
+                    }
+                }else if(response.equals("Saldo tidak cukup")){
+                    showDialogComplete("Saldo Kurang","Saldo kamu tidak cukup untuk melakukan transaksi ini, harap segera isi ulang saldo agar dapat melakukan transaksi",R.raw.oops)
+                }else{
+                    showDialogComplete(response.toString(),"Terjadi kesalahan sistem, coba lagi",R.raw.oops)
+                }
+            },
+            { error ->
+                LoadingDialogFrg.hideLoading()
+                showDialogComplete("Error",error.toString(),R.raw.oops)
+            })
+        request.add(stringRequest)
+    }
+    private fun showDialogComplete(judulnya:String,isinya:String,loti:Int){
+        val view = View.inflate(requireContext(), R.layout.dialog_anim_ok,null)
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setView(view)
+        val dialog = builder.create()
+
+        val judul = view.findViewById<TextView>(R.id.judul)
+        val isi = view.findViewById<TextView>(R.id.isi)
+        val btn_yes = view.findViewById<Button>(R.id.btn_ok)
+        val anim = view.findViewById<LottieAnimationView>(R.id.anim)
+
+        anim.setAnimation(loti)
+        anim.loop(false)
+        judul.text = judulnya
+        isi.text = isinya
+
+        try {
+            dialog.show()
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            btn_yes.setOnClickListener {
+                dialog.dismiss()
+            }
+        }catch (e:java.lang.Exception){
+
+        }
+
+    }
     override fun onResume() {
         super.onResume()
         getDataAkun()

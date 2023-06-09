@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="180dp"
-    android:layout_height="200dp"
+    android:layout_width="160dp"
+    android:layout_height="180dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="5dp"
+    android:layout_margin="2dp"
     android:layout_marginTop="5dp"
     android:elevation="5dp"
     app:cardCornerRadius="15dp"
-    android:layout_margin="10dp">
+    >
     <FrameLayout
         android:layout_gravity="end"
         android:backgroundTint="#C6E2F5"
@@ -32,19 +32,21 @@
         android:weightSum="4">
         <TextView
             android:layout_marginTop="10dp"
-            android:id="@+id/NamaBarang"
+            android:id="@+id/nama_produk"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:text="Nama Barang"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:fontFamily="@font/poppins"
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_weight="0.5"/>
         <ImageView
+            android:id="@+id/gambar_produk"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2.5"
-            android:background="@color/black"
             android:layout_marginHorizontal="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,35 +54,18 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <LinearLayout
+
+            <TextView
+                android:id="@+id/harga"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginStart="20dp"
-                android:gravity="center|start">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="Rp. 18.000"
+                android:textColor="@color/black"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="Rp."
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:id="@+id/harga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:fontFamily="@font/poppins"
-                        android:text="18.000"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -12,5 +12,8 @@ class VendingMachine : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVendingMachineBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
     }
 }

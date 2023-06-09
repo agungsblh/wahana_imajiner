@@ -8,12 +8,30 @@
     android:elevation="5dp"
     app:cardCornerRadius="15dp"
     android:layout_margin="10dp">
+    <FrameLayout
+        android:layout_gravity="end"
+        android:backgroundTint="#C6E2F5"
+        android:background="@drawable/rounded_stok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="10"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:id="@+id/stok"
+            android:fontFamily="@font/poppins"
+            android:padding="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="4">
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/NamaBarang"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -62,14 +80,6 @@
                         android:text="18.000"
                         android:textColor="@color/black"/>
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:text="Harga"
-                    android:layout_marginTop="-10dp"
-                    android:textColor="@color/black" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,9 +87,9 @@
                 android:gravity="center|end">
                 <ImageView
                     android:id="@+id/bag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_baseline_shopping_bag_24"
+                    android:layout_width="17dp"
+                    android:layout_height="21dp"
+                    android:background="@drawable/shopping_bag"
                     android:layout_marginEnd="10dp"/>
             </LinearLayout>
 

@@ -290,7 +290,6 @@ class BerandaFragment : Fragment() {
         }catch (e:java.lang.Exception){
 
         }
-
     }
     override fun onResume() {
         super.onResume()

@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -29,8 +28,7 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pervasive.wahana.R
-import com.pervasive.wahana.activities.ScannerActivity
-import com.pervasive.wahana.activities.VendingMachine
+import com.pervasive.wahana.activities.VendingMachineActivity
 import com.pervasive.wahana.activities.WahanaScanningActivity
 import com.pervasive.wahana.adapter.PromoImageSlider
 import com.pervasive.wahana.databinding.FragmentBerandaBinding
@@ -123,7 +121,7 @@ class BerandaFragment : Fragment() {
                 findNavController().navigate(R.id.action_berandaFragment_to_beliTiketFragment)
             }
             vendingMachine.setOnClickListener{
-                val intent = Intent(requireContext(),VendingMachine::class.java)
+                val intent = Intent(requireContext(),VendingMachineActivity::class.java)
                 startActivity(intent)
             }
         }

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
@@ -17,21 +16,23 @@ import com.pervasive.wahana.model.ProdukVendingModel
 import com.pervasive.wahana.utils.LinkApi
 import com.pervasive.wahana.utils.LoadingDialog
 
-class VendingMachine : AppCompatActivity() {
+class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCartListener {
 
     private lateinit var binding : ActivityVendingMachineBinding
     val loading = LoadingDialog(this)
 
-    var listProduk = ArrayList<ProdukVendingModel>()
+    private val listProduk = mutableListOf<ProdukVendingModel>()
+    private val keranjangList = mutableListOf<ProdukVendingModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVendingMachineBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         getListProduk()
 
+
     }
+
     private fun getListProduk(){
         loading.startLoading()
         var queue: RequestQueue = Volley.newRequestQueue(this)
@@ -61,11 +62,11 @@ class VendingMachine : AppCompatActivity() {
 
                     }
                     try {
-                        var adapterku = ProdukVendingAdapter(listProduk)
+                        var adapterku = ProdukVendingAdapter(listProduk,this)
                         val gridLayoutManager = GridLayoutManager(this, calculateNoOfColumns())
-                        binding.recycleProduk.layoutManager = gridLayoutManager
-                        binding.recycleProduk.setHasFixedSize(true)
-                        binding.recycleProduk.adapter = adapterku
+                        binding.recycle.layoutManager = gridLayoutManager
+                        binding.recycle.setHasFixedSize(true)
+                        binding.recycle.adapter = adapterku
                         //
                         adapterku.notifyDataSetChanged()
                     }catch (e:Exception){
@@ -84,5 +85,29 @@ class VendingMachine : AppCompatActivity() {
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
         val columnWidthDp = 200 // Ukuran kolom yang diinginkan dalam dp
         return (screenWidthDp / columnWidthDp + 0.5).toInt() // Pembulatan ke atas
+    }
+
+    override fun onAddToCartClicked(product: ProdukVendingModel) {
+
+        Toast.makeText(this,"Menambahkah " +product.nama,Toast.LENGTH_SHORT).show()
+
+        // Cek apakah produk sudah ada dalam keranjang
+        val existingProduk = keranjangList.find { it.nama == product.nama }
+
+        if (existingProduk != null) {
+            // Jika produk sudah ada, tingkatkan jumlahnya
+            existingProduk.jumlah++
+//            keranjangAdapter.notifyDataSetChanged()
+//            updateTotalHarga()
+        } else {
+            // Jika produk belum ada, tambahkan ke dalam keranjang
+            keranjangList.add(product)
+//            keranjangAdapter.notifyDataSetChanged()
+//            updateTotalHarga()
+        }
+
+
+        // Refresh RecyclerView keranjang
+        //keranjangAdapter.notifyDataSetChanged()
     }
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.pervasive.wahana.R
 import com.pervasive.wahana.databinding.FragmentKeranjangVendingMachineBinding
 import com.pervasive.wahana.databinding.FragmentTopupBinding
+import com.pervasive.wahana.model.ProdukVendingModel
 
 
 class KeranjangVendingMachineFragment : Fragment() {
@@ -19,8 +20,10 @@ class KeranjangVendingMachineFragment : Fragment() {
 
         onAction()
 
+
         return binding.root
     }
+
     private fun onAction(){
         binding.apply {
 

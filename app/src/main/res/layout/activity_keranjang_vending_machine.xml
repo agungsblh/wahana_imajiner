@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.KeranjangVendingMachineActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/hijau"
+            android:layout_height="?attr/actionBarSize">
+            <ImageView
+                android:layout_gravity="center|start"
+                android:layout_marginStart="10dp"
+                android:id="@+id/btn_back"
+                android:src="@drawable/ic_back"
+                android:layout_width="30dp"
+                app:tint="@color/white"
+                android:layout_height="30dp"/>
+            <TextView
+                android:text="Keranjang"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:gravity="center|start"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/jumlah_item"
+            android:text="Jumlah item: 2"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerKeranjangVM"
+            tools:listitem="@layout/adapter_keranjang_vm"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="90dp"
+            tools:itemCount="8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/bayar"
+        android:text="Bayar"
+        android:layout_gravity="bottom"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:backgroundTint="@color/hijau"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/rounded_button_20"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

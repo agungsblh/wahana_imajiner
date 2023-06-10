@@ -21,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wahana"
         tools:targetApi="31">
-
+        <activity
+            android:name=".activities.KeranjangVendingMachineActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.RestaurantScanningActivity"
             android:exported="false" />

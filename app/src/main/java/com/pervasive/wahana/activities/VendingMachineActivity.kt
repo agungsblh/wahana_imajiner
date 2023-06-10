@@ -1,5 +1,6 @@
 package com.pervasive.wahana.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,9 +9,13 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.pervasive.wahana.R
+import com.pervasive.wahana.adapter.CartMakananAdapter
+import com.pervasive.wahana.adapter.CartVendingAdapter
 import com.pervasive.wahana.adapter.MakananAdapter
 import com.pervasive.wahana.adapter.ProdukVendingAdapter
 import com.pervasive.wahana.databinding.ActivityVendingMachineBinding
+import com.pervasive.wahana.fragments.KeranjangVendingMachineFragment
 import com.pervasive.wahana.model.MakananModel
 import com.pervasive.wahana.model.ProdukVendingModel
 import com.pervasive.wahana.utils.LinkApi
@@ -22,15 +27,29 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
     val loading = LoadingDialog(this)
 
     private val listProduk = mutableListOf<ProdukVendingModel>()
+
     private val keranjangList = mutableListOf<ProdukVendingModel>()
+    private lateinit var keranjangAdapter: CartVendingAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVendingMachineBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         getListProduk()
+        keranjangAdapter = CartVendingAdapter(this,keranjangList)
 
+        binding.fabKeranjang.setOnClickListener {
+            openKeranjang()
+        }
 
+    }
+    private fun openKeranjang() {
+        val intent = Intent(this, KeranjangVendingMachineActivity::class.java)
+        val bundle = Bundle()
+        bundle.putParcelableArrayList("KERANJANG_LIST", ArrayList(keranjangList))
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     private fun getListProduk(){
@@ -97,12 +116,12 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
         if (existingProduk != null) {
             // Jika produk sudah ada, tingkatkan jumlahnya
             existingProduk.jumlah++
-//            keranjangAdapter.notifyDataSetChanged()
+            keranjangAdapter.notifyDataSetChanged()
 //            updateTotalHarga()
         } else {
             // Jika produk belum ada, tambahkan ke dalam keranjang
             keranjangList.add(product)
-//            keranjangAdapter.notifyDataSetChanged()
+            keranjangAdapter.notifyDataSetChanged()
 //            updateTotalHarga()
         }
 

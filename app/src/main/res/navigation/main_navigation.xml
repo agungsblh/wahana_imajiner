@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_berandaFragment_to_beliTiketFragment"
             app:destination="@id/beliTiketFragment"/>
+        <action
+            android:id="@+id/action_berandaFragment_to_newWahanaFragment"
+            app:destination="@id/newWahanaFragment" />
     </fragment>
     <fragment
         android:id="@+id/akunFragment"
@@ -67,4 +70,9 @@
         android:name="com.pervasive.wahana.fragments.BeliTiketFragment"
         android:label="fragment_beli_tiket"
         tools:layout="@layout/fragment_beli_tiket" />
+    <fragment
+        android:id="@+id/newWahanaFragment"
+        android:name="com.pervasive.wahana.fragments.NewWahanaFragment"
+        android:label="fragment_new_wahana"
+        tools:layout="@layout/fragment_new_wahana" />
 </navigation>

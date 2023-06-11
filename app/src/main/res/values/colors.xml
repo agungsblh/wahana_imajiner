@@ -11,4 +11,13 @@
     <color name="abuabu">#EEEEEE</color>
     <color name="hijau">#74C461</color>
     <color name="orange_tua">#FF8173</color>
+    <color name="biru_muda">#60ADF5</color>
+
+
+    <color name="gray500">#6B7280</color>
+    <color name="gray600">#4B5563</color>
+    <color name="gray700">#374151</color>
+    <color name="gray800">#1F2937</color>
+    <color name="gray900">#030712</color>
+    <color name="merah">#EB455F</color>
 </resources>

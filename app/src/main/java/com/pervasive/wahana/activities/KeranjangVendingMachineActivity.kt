@@ -66,6 +66,7 @@ class KeranjangVendingMachineActivity : AppCompatActivity() {
     }
     private fun bayarVendingMachine(){
         loading.startLoading()
+
         var url:String = LinkApi.link_bayar_vending_machine
         var request: RequestQueue = Volley.newRequestQueue(applicationContext)
         var stringRequest = StringRequest(

@@ -26,6 +26,7 @@ class LinkApi {
         val link_hapus_antrian = link_api+"hapus_antrian.php"
         val link_create_orderan_resto = link_api+"createOrderanResto.php"
         val link_bayar_order_resto = link_api+"bayar_order_resto.php"
+        val link_bayar_vending_machine = link_api+"bayar_vending_machine.php"
         /////////////////////////END SEND
     }
 }

@@ -119,7 +119,8 @@ class BerandaFragment : Fragment() {
                 findNavController().navigate(R.id.action_berandaFragment_to_restaurantFragment)
             }
             beliTiket.setOnClickListener{
-                findNavController().navigate(R.id.action_berandaFragment_to_beliTiketFragment)
+//                findNavController().navigate(R.id.action_berandaFragment_to_beliTiketFragment)
+
             }
             vendingMachineMinuman.setOnClickListener{
                 val intent = Intent(requireContext(),VendingMachineMinumanActivity::class.java)

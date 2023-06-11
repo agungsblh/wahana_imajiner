@@ -12,6 +12,7 @@ class LinkApi {
         val link_get_penyakit = link_api+"get_list_penyakit.php"
         val link_get_data_akun = link_api+"get_data_akun.php"
         val link_get_list_riwayat_transaksi = link_api+"get_list_riwayat_transaksi.php"
+        val link_get_list_riwayat_tiket = link_api+"get_list_riwayat_tiket.php"
         val link_cek_tiket_antrian_wahana = link_api+"cek_tiket_antrian_wahana.php"
         val link_cek_status_user = link_api+"cek_status_user.php"
         val link_get_list_makanan = link_api+"get_list_makanan.php"
@@ -28,6 +29,7 @@ class LinkApi {
         val link_create_orderan_resto = link_api+"createOrderanResto.php"
         val link_bayar_order_resto = link_api+"bayar_order_resto.php"
         val link_bayar_vending_machine = link_api+"bayar_vending_machine.php"
+        val link_beli_tiket_masuk = link_api+"beli_tiket_masuk.php"
         /////////////////////////END SEND
     }
 }

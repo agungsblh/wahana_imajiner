@@ -49,7 +49,7 @@
                 android:id="@+id/rp"
                 android:text="Rp."
                 android:textSize="12sp"
-                android:layout_toLeftOf="@id/saldo"
+                android:layout_toLeftOf="@id/harga"
                 android:layout_marginBottom="-20dp"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/black"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/saldo"
+                android:id="@+id/harga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -68,7 +68,7 @@
 
 
             <FrameLayout
-                android:layout_below="@id/saldo"
+                android:layout_below="@id/harga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView

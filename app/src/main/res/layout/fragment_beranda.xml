@@ -155,7 +155,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
                             <TextView
-                                android:text="Rp. 70.000"
+                                android:text="Rp. 150.000"
                                 android:textSize="12sp"
                                 android:textColor="@color/black"
                                 android:fontFamily="@font/poppins_semibold"

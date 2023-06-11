@@ -202,5 +202,7 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
     public fun updateTotalHarga(){
         var totalHarga = keranjangAdapter.totalHarga
         binding.total.text = "Total: "+Converter.mataUangRupiah(totalHarga)
+
+
     }
 }

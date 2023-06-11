@@ -10,16 +10,19 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.pervasive.wahana.R
+import com.pervasive.wahana.activities.KeranjangVendingMachineActivity
 import com.pervasive.wahana.activities.RestaurantScanningActivity
+import com.pervasive.wahana.activities.VendingMachineActivity
 import com.pervasive.wahana.model.CartItem
 import com.pervasive.wahana.model.MakananModel
 import com.pervasive.wahana.model.ProdukVendingModel
 import com.pervasive.wahana.utils.Converter
 import com.squareup.picasso.Picasso
 
-class CartVendingAdapter(var context:Context, private val keranjangList: MutableList<ProdukVendingModel>):
+class CartVendingAdapter(var context:Context, private val keranjangList: MutableList<ProdukVendingModel>,private val vmActivity: KeranjangVendingMachineActivity):
     RecyclerView.Adapter<CartVendingAdapter.CartViewHolder>() {
     public var totalHarga: Int = 0
+    public var totalItem: Int = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.adapter_keranjang_vm, parent, false)
         return CartViewHolder(view)
@@ -32,32 +35,36 @@ class CartVendingAdapter(var context:Context, private val keranjangList: Mutable
         holder.jumlahItem.text = cartItem.jumlah.toString()
         Picasso.get().load(cartItem.gambar).into(holder.gambarProduk)
         holder.kurangButton.setOnClickListener {
-//            if (cartItem.jumlah > 1) {
-//                cartItem.jumlah--
-//                updateTotalHarga()
-//            } else {
-//                makananItems.removeAt(position)
-//                updateTotalHarga()
-//            }
-//            notifyDataSetChanged()
+            if (cartItem.jumlah > 1) {
+                cartItem.jumlah--
+                updateTotalHarga()
+            } else {
+                keranjangList.removeAt(position)
+                updateTotalHarga()
+            }
+            notifyDataSetChanged()
         }
 
         holder.tambahButton.setOnClickListener {
-//            cartItem.jumlah++
-//            updateTotalHarga()
-//            notifyDataSetChanged()
+            cartItem.jumlah++
+            updateTotalHarga()
+            notifyDataSetChanged()
         }
         holder.hapusButtom.setOnClickListener {
-
+            keranjangList.removeAt(position)
+            updateTotalHarga()
+            notifyDataSetChanged()
         }
     }
-//    public fun updateTotalHarga() {
-//        totalHarga = 0
-//        for (produk in makananItems) {
-//            totalHarga += produk.harga * produk.jumlah
-//        }
-//        restoActivity.updateTotalHarga()
-//    }
+    public fun updateTotalHarga() {
+        totalHarga = 0
+        totalItem = 0
+        for (produk in keranjangList) {
+            totalHarga += produk.harga * produk.jumlah
+            totalItem+= produk.jumlah
+        }
+        vmActivity.updateTotalHarga()
+    }
     override fun getItemCount(): Int {
         return keranjangList.size
     }
@@ -72,5 +79,6 @@ class CartVendingAdapter(var context:Context, private val keranjangList: Mutable
         val tambahButton: FrameLayout = itemView.findViewById(R.id.tambah)
         val hapusButtom:LinearLayout = itemView.findViewById(R.id.hapus)
     }
+
 
 }

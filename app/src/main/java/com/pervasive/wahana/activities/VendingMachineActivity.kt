@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -18,8 +19,10 @@ import com.pervasive.wahana.databinding.ActivityVendingMachineBinding
 import com.pervasive.wahana.fragments.KeranjangVendingMachineFragment
 import com.pervasive.wahana.model.MakananModel
 import com.pervasive.wahana.model.ProdukVendingModel
+import com.pervasive.wahana.utils.Converter
 import com.pervasive.wahana.utils.LinkApi
 import com.pervasive.wahana.utils.LoadingDialog
+import com.pervasive.wahana.viewmodel.KeranjangVendingViewModel
 
 class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCartListener {
 
@@ -28,8 +31,9 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
 
     private val listProduk = mutableListOf<ProdukVendingModel>()
 
-    private val keranjangList = mutableListOf<ProdukVendingModel>()
+    val keranjangList = mutableListOf<ProdukVendingModel>()
     private lateinit var keranjangAdapter: CartVendingAdapter
+//    val keranjangViewModel: KeranjangVendingViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +41,8 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
         setContentView(binding.root)
 
         getListProduk()
-        keranjangAdapter = CartVendingAdapter(this,keranjangList)
+
+        keranjangAdapter = CartVendingAdapter(this,keranjangList, KeranjangVendingMachineActivity())
 
         binding.fabKeranjang.setOnClickListener {
             openKeranjang()
@@ -121,6 +126,7 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
         } else {
             // Jika produk belum ada, tambahkan ke dalam keranjang
             keranjangList.add(product)
+
             keranjangAdapter.notifyDataSetChanged()
 //            updateTotalHarga()
         }
@@ -129,4 +135,8 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
         // Refresh RecyclerView keranjang
         //keranjangAdapter.notifyDataSetChanged()
     }
+//    public fun updateTotalHarga(){
+//        var totalHarga = keranjangAdapter.totalHarga
+//        binding.total.text = "Total: "+ Converter.mataUangRupiah(totalHarga)
+//    }
 }

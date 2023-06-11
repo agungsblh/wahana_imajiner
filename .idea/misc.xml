@@ -1,9 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/drawable/titikindicator.xml" value="0.2015" />
+        <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/activity_restaurant_scanning.xml" value="0.25" />
         <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/activity_vending_machine.xml" value="0.264" />
+        <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/activity_wahana_scanning.xml" value="0.25" />
+        <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/adapter_feature_wahana.xml" value="0.25" />
+        <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/adapter_keranjang_vm.xml" value="0.25" />
+        <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/adapter_order.xml" value="0.25" />
         <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/fragment_beli_tiket.xml" value="0.264" />
         <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/fragment_beranda.xml" value="0.264" />
         <entry key="..\:/LATIHAN_PROGRAMMING/wahana_imajiner/app/src/main/res/layout/fragment_wahana.xml" value="0.25" />

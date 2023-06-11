@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layoutMain"
-    tools:context=".activities.VendingMachineMinumanActivity"
-    android:orientation="vertical">
+    tools:context=".activities.VendingMachineMakananActivity">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -133,6 +132,4 @@
             android:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

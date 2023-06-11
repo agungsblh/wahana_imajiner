@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/total_item"
-            android:text="Jumlah item: 2"
+            android:text="Jumlah item: 0"
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Total: Rp.12.000"
+            android:text="Total: Rp.0"
             android:layout_marginHorizontal="20dp"
             android:id="@+id/total_harga"
             android:fontFamily="@font/poppins_semibold"

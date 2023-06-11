@@ -19,5 +19,9 @@ object Converter {
 
         return "Rp. "+uang.toString().reversed().chunked(3).joinToString(".").reversed()
     }
+    fun tigatitikuang(uang:Int):String{
+
+        return uang.toString().reversed().chunked(3).joinToString(".").reversed()
+    }
 
 }

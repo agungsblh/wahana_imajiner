@@ -16,7 +16,8 @@ class LinkApi {
         val link_cek_status_user = link_api+"cek_status_user.php"
         val link_get_list_makanan = link_api+"get_list_makanan.php"
         val link_get_antrian_resto = link_api+"get_antrian_resto.php"
-        val link_get_produk_vending_machine = link_api+"get_list_produk_vending_machine.php"
+        val link_get_produk_vending_machine_minuman = link_api+"get_list_produk_vending_machine_minuman.php"
+        val link_get_produk_vending_machine_makanan = link_api+"get_list_produk_vending_machine_makanan.php"
         ////////////////////END GET
 
         /////////////////////////SEND

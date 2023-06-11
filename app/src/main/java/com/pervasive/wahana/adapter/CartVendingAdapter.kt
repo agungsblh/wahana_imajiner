@@ -11,10 +11,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.pervasive.wahana.R
 import com.pervasive.wahana.activities.KeranjangVendingMachineActivity
-import com.pervasive.wahana.activities.RestaurantScanningActivity
-import com.pervasive.wahana.activities.VendingMachineActivity
-import com.pervasive.wahana.model.CartItem
-import com.pervasive.wahana.model.MakananModel
 import com.pervasive.wahana.model.ProdukVendingModel
 import com.pervasive.wahana.utils.Converter
 import com.squareup.picasso.Picasso

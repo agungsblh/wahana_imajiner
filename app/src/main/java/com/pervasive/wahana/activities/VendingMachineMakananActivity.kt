@@ -4,40 +4,32 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.pervasive.wahana.R
-import com.pervasive.wahana.adapter.CartMakananAdapter
 import com.pervasive.wahana.adapter.CartVendingAdapter
-import com.pervasive.wahana.adapter.MakananAdapter
 import com.pervasive.wahana.adapter.ProdukVendingAdapter
 import com.pervasive.wahana.databinding.ActivityVendingMachineBinding
-import com.pervasive.wahana.fragments.KeranjangVendingMachineFragment
-import com.pervasive.wahana.model.MakananModel
+import com.pervasive.wahana.databinding.ActivityVendingMachineMakananBinding
 import com.pervasive.wahana.model.ProdukVendingModel
-import com.pervasive.wahana.utils.Converter
 import com.pervasive.wahana.utils.LinkApi
 import com.pervasive.wahana.utils.LoadingDialog
-import com.pervasive.wahana.viewmodel.KeranjangVendingViewModel
 
-class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCartListener {
-
-    private lateinit var binding : ActivityVendingMachineBinding
+class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCartListener {
+    private lateinit var binding : ActivityVendingMachineMakananBinding
     val loading = LoadingDialog(this)
 
     private val listProduk = mutableListOf<ProdukVendingModel>()
 
     val keranjangList = mutableListOf<ProdukVendingModel>()
     private lateinit var keranjangAdapter: CartVendingAdapter
-//    val keranjangViewModel: KeranjangVendingViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityVendingMachineBinding.inflate(layoutInflater)
+        binding = ActivityVendingMachineMakananBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         getListProduk()
@@ -64,7 +56,7 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
         loading.startLoading()
         var queue: RequestQueue = Volley.newRequestQueue(this)
         var reques = JsonArrayRequest(
-            Request.Method.GET, LinkApi.link_get_produk_vending_machine,null,
+            Request.Method.GET, LinkApi.link_get_produk_vending_machine_makanan,null,
             { response ->
                 loading.isDismiss()
                 if(response.length()==0){
@@ -116,7 +108,7 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
 
     override fun onAddToCartClicked(product: ProdukVendingModel) {
 
-        Toast.makeText(this,"Menambahkah " +product.nama,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Menambahkah " +product.nama, Toast.LENGTH_SHORT).show()
 
         // Cek apakah produk sudah ada dalam keranjang
         val existingProduk = keranjangList.find { it.nama == product.nama }
@@ -134,12 +126,5 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
 //            updateTotalHarga()
         }
 
-
-        // Refresh RecyclerView keranjang
-        //keranjangAdapter.notifyDataSetChanged()
     }
-//    public fun updateTotalHarga(){
-//        var totalHarga = keranjangAdapter.totalHarga
-//        binding.total.text = "Total: "+ Converter.mataUangRupiah(totalHarga)
-//    }
 }

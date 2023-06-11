@@ -41,8 +41,12 @@ class TopupFragment : Fragment() {
         onAction()
 
         topup_custombox()
+        initBalance()
 
         return binding.root
+    }
+    private fun initBalance(){
+        binding.saldo.text = Converter.tigatitikuang(GlobalData.saldo)
     }
     private fun onAction(){
         binding.apply {
@@ -263,6 +267,7 @@ class TopupFragment : Fragment() {
                         GlobalData.berat_badan = job.getInt("berat_badan")
                         GlobalData.saldo = job.getInt("saldo")
                         GlobalData.detail_riwayat_penyakit = job.getString("nama_penyakit")
+                        initBalance()
                     }
                 }
             },

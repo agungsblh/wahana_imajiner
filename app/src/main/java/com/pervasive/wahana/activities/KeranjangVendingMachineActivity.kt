@@ -59,6 +59,9 @@ class KeranjangVendingMachineActivity : AppCompatActivity() {
             bayar.setOnClickListener {
                 bayarVendingMachine()
             }
+            btnBack.setOnClickListener {
+                finish()
+            }
         }
     }
     private fun bayarVendingMachine(){

@@ -47,6 +47,9 @@ class VendingMachineActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCa
         binding.fabKeranjang.setOnClickListener {
             openKeranjang()
         }
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
 
     }
     private fun openKeranjang() {

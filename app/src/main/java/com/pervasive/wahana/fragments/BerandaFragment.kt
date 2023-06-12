@@ -177,6 +177,8 @@ class BerandaFragment : Fragment() {
                     }catch (ex:Exception){
 
                     }
+                }else if (response.equals("Saldo tidak cukup")){
+                    showDialogComplete("Gagal",response.toString(),R.raw.moneyrun)
                 }else{
                     showDialogComplete("Gagal",response.toString(),R.raw.oops)
                 }
@@ -340,7 +342,7 @@ class BerandaFragment : Fragment() {
 
                     }
                 }else if(response.equals("Saldo tidak cukup")){
-                    showDialogComplete("Saldo Kurang","Saldo kamu tidak cukup untuk melakukan transaksi ini, harap segera isi ulang saldo agar dapat melakukan transaksi",R.raw.oops)
+                    showDialogComplete("Saldo Kurang","Saldo kamu tidak cukup untuk melakukan transaksi ini, harap segera isi ulang saldo agar dapat melakukan transaksi",R.raw.moneyrun)
                 }else{
                     showDialogComplete(response.toString(),"Terjadi kesalahan sistem, coba lagi",R.raw.oops)
                 }
@@ -363,7 +365,7 @@ class BerandaFragment : Fragment() {
         val anim = view.findViewById<LottieAnimationView>(R.id.anim)
 
         anim.setAnimation(loti)
-        anim.loop(false)
+        anim.loop(true)
         judul.text = judulnya
         isi.text = isinya
 

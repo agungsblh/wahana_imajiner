@@ -3,6 +3,8 @@ package com.pervasive.wahana.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.volley.Request
@@ -17,6 +19,7 @@ import com.pervasive.wahana.databinding.ActivityVendingMachineMakananBinding
 import com.pervasive.wahana.model.ProdukVendingModel
 import com.pervasive.wahana.utils.LinkApi
 import com.pervasive.wahana.utils.LoadingDialog
+import java.util.Locale
 
 class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.AddToCartListener {
     private lateinit var binding : ActivityVendingMachineMakananBinding
@@ -27,6 +30,10 @@ class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.
     val keranjangList = mutableListOf<ProdukVendingModel>()
     private lateinit var keranjangAdapter: CartVendingAdapter
 
+    private val originalProdukList = mutableListOf<ProdukVendingModel>()
+    private val filteredProdukList = mutableListOf<ProdukVendingModel>()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVendingMachineMakananBinding.inflate(layoutInflater)
@@ -36,12 +43,31 @@ class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.
 
         keranjangAdapter = CartVendingAdapter(this,keranjangList, KeranjangVendingMachineActivity())
 
-        binding.fabKeranjang.setOnClickListener {
+        binding.keranjang.setOnClickListener {
             openKeranjang()
         }
         binding.btnBack.setOnClickListener {
             finish()
         }
+
+        //
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchProduk(newText)
+                return true
+            }
+        })
+
+
+
+        val adapterku = ProdukVendingAdapter(filteredProdukList, this)
+        // ...
+        binding.recycle.adapter = adapterku
+        //
 
     }
     private fun openKeranjang() {
@@ -86,6 +112,15 @@ class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.
                         binding.recycle.layoutManager = gridLayoutManager
                         binding.recycle.setHasFixedSize(true)
                         binding.recycle.adapter = adapterku
+
+                        //
+                        originalProdukList.addAll(listProduk)
+                        filteredProdukList.addAll(listProduk)
+
+
+                        val adapterkuu = ProdukVendingAdapter(filteredProdukList, this)
+                        // ...
+                        binding.recycle.adapter = adapterkuu
                         //
                         adapterku.notifyDataSetChanged()
                     }catch (e:Exception){
@@ -99,6 +134,15 @@ class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.
             })
         queue.add(reques)
     }
+    private fun searchProduk(query: String) {
+        val keyword = query.trim().toLowerCase(Locale.getDefault())
+        filteredProdukList.clear()
+        filteredProdukList.addAll(originalProdukList.filter {
+            it.nama.toLowerCase(Locale.getDefault()).contains(keyword)
+        })
+        binding.recycle.adapter?.notifyDataSetChanged()
+    }
+
     private fun calculateNoOfColumns(): Int {
         val displayMetrics = resources.displayMetrics
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
@@ -108,7 +152,7 @@ class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.
 
     override fun onAddToCartClicked(product: ProdukVendingModel) {
 
-        Toast.makeText(this,"Menambahkah " +product.nama, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Menambahkan " +product.nama, Toast.LENGTH_SHORT).show()
 
         // Cek apakah produk sudah ada dalam keranjang
         val existingProduk = keranjangList.find { it.nama == product.nama }
@@ -124,6 +168,11 @@ class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.
 
             keranjangAdapter.notifyDataSetChanged()
 //            updateTotalHarga()
+        }
+        if (keranjangList.size!=0){
+            binding.indikator.visibility = View.VISIBLE
+        }else{
+            binding.indikator.visibility = View.GONE
         }
 
     }

@@ -108,7 +108,8 @@
                                 android:layout_height="wrap_content">
                                 <LinearLayout
                                     android:gravity="center"
-                                    android:layout_marginTop="6dp"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginBottom="8dp"
                                     android:layout_gravity="center"
                                     android:orientation="horizontal"
                                     android:layout_width="match_parent"
@@ -120,34 +121,14 @@
                                         android:layout_height="50dp"/>
                                     <TextView
                                         android:layout_gravity="center"
-                                        android:text="Tidak mendertita penyakit jantung"
+                                        android:text="Tidak menderita penyakit jantung"
                                         android:textColor="@color/black"
                                         android:textSize="14sp"
                                         android:fontFamily="@font/poppins_semibold"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"/>
                                 </LinearLayout>
-                                <LinearLayout
-                                    android:gravity="center"
-                                    android:layout_marginTop="6dp"
-                                    android:layout_gravity="center"
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/tiket"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"/>
-                                    <TextView
-                                        android:layout_gravity="center"
-                                        android:text="Hanya tersedia dipaket full wahana"
-                                        android:textColor="@color/black"
-                                        android:textSize="14sp"
-                                        android:fontFamily="@font/poppins_semibold"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"/>
-                                </LinearLayout>
+
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -321,34 +302,34 @@
                                         android:layout_height="50dp"/>
                                     <TextView
                                         android:layout_gravity="center"
-                                        android:text="Tidak mendertita penyakit jantung"
+                                        android:text="Tidak menderita penyakit jantung"
                                         android:textColor="@color/black"
                                         android:textSize="14sp"
                                         android:fontFamily="@font/poppins_semibold"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"/>
                                 </LinearLayout>
-                                <LinearLayout
-                                    android:gravity="center"
-                                    android:layout_marginTop="6dp"
-                                    android:layout_gravity="center"
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/tiket"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"/>
-                                    <TextView
-                                        android:layout_gravity="center"
-                                        android:text="Hanya tersedia dipaket full wahana"
-                                        android:textColor="@color/black"
-                                        android:textSize="14sp"
-                                        android:fontFamily="@font/poppins_semibold"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"/>
-                                </LinearLayout>
+<!--                                <LinearLayout-->
+<!--                                    android:gravity="center"-->
+<!--                                    android:layout_marginTop="6dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content">-->
+<!--                                    <ImageView-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/tiket"-->
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:text="Hanya tersedia dipaket full wahana"-->
+<!--                                        android:textColor="@color/black"-->
+<!--                                        android:textSize="14sp"-->
+<!--                                        android:fontFamily="@font/poppins_semibold"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"/>-->
+<!--                                </LinearLayout>-->
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -481,58 +462,58 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <androidx.coordinatorlayout.widget.CoordinatorLayout
-                        android:layout_width="match_parent"
-                        android:padding="10dp"
-                        android:clipToPadding="false"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:elevation="6dp"
-                            android:layout_gravity="end"
-                            android:cropToPadding="false"
-                            android:layout_marginTop="-22dp"
-                            android:src="@drawable/komedi_putar"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"/>
+<!--                    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:padding="10dp"-->
+<!--                        android:clipToPadding="false"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <ImageView-->
+<!--                            android:elevation="6dp"-->
+<!--                            android:layout_gravity="end"-->
+<!--                            android:cropToPadding="false"-->
+<!--                            android:layout_marginTop="-22dp"-->
+<!--                            android:src="@drawable/komedi_putar"-->
+<!--                            android:layout_width="70dp"-->
+<!--                            android:layout_height="70dp"/>-->
 
-                        <androidx.cardview.widget.CardView
-                            android:elevation="5dp"
-                            app:cardElevation="5dp"
-                            app:cardMaxElevation="5dp"
-                            android:layout_margin="5dp"
-                            app:cardCornerRadius="15dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <LinearLayout
-                                android:layout_margin="20dp"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+<!--                        <androidx.cardview.widget.CardView-->
+<!--                            android:elevation="5dp"-->
+<!--                            app:cardElevation="5dp"-->
+<!--                            app:cardMaxElevation="5dp"-->
+<!--                            android:layout_margin="5dp"-->
+<!--                            app:cardCornerRadius="15dp"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content">-->
+<!--                            <LinearLayout-->
+<!--                                android:layout_margin="20dp"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content">-->
 
-                                <LinearLayout
-                                    android:gravity="center"
-                                    android:layout_marginTop="6dp"
-                                    android:layout_gravity="center"
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                                    <ImageView
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/tiket"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"/>
-                                    <TextView
-                                        android:layout_gravity="center"
-                                        android:text="Tersedia di paket regular"
-                                        android:textColor="@color/black"
-                                        android:textSize="14sp"
-                                        android:fontFamily="@font/poppins_semibold"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"/>
-                                </LinearLayout>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+<!--                                <LinearLayout-->
+<!--                                    android:gravity="center"-->
+<!--                                    android:layout_marginTop="6dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content">-->
+<!--                                    <ImageView-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/tiket"-->
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:text="Tersedia di paket regular"-->
+<!--                                        android:textColor="@color/black"-->
+<!--                                        android:textSize="14sp"-->
+<!--                                        android:fontFamily="@font/poppins_semibold"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"/>-->
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+<!--                        </androidx.cardview.widget.CardView>-->
+<!--                    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_marginTop="20dp"

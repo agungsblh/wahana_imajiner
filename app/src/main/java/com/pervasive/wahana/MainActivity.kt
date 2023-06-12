@@ -72,7 +72,9 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             scanner.setOnClickListener {
                 if (GlobalData.status_available==1){
-                    showDialogWarning()
+                    showDialogWarning("Masih ada transaksi lain yang sedang berjalan")
+                }else if(GlobalData.tiket_available==0){
+                    showDialogWarning("Kamu tidak memiliki tiket aktif, silahkan beli tiket terlebih dahulu sebelum melakukan scan")
                 }else{
                     val intent = Intent(this@MainActivity,ScannerActivity::class.java)
                     startActivity(intent)
@@ -81,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun showDialogWarning(){
+    private fun showDialogWarning(isi_pesan:String){
         val view = View.inflate(this, R.layout.dialog_anim_ok,null)
         val builder = AlertDialog.Builder(this)
         builder.setView(view)
@@ -95,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         anim.setAnimation(R.raw.oops)
         anim.loop(false)
         judul.text = "Ooop"
-        isi.text = "Masih ada transaksi lain yang sedang berjalan"
+        isi.text = isi_pesan
 
         try {
             dialog.show()

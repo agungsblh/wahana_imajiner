@@ -9,6 +9,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.provider.Settings.Global
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -33,6 +34,7 @@ class WahanaScanningActivity : AppCompatActivity() {
     val loading = LoadingDialog(this)
     lateinit var sharedPreferences: SharedPreferences
 
+    var create_sukses=0
     //var kode = String()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,17 +58,16 @@ class WahanaScanningActivity : AppCompatActivity() {
                     createAntrian(3)
                 }
             }
-
         }else{
             // cek barcode
             binding.namaWahana.text = "Wahana"
             writeCode(intent.getStringExtra("KODE").toString())
         }
-
         binding.batalkanAntrian.setOnClickListener {
             batalkanAntrian()
         }
-        check_tiket()
+//        GlobalData.status_available = 1
+//        check_tiket()
     }
     private fun check_tiket(){
         val handler = Handler()
@@ -82,9 +83,12 @@ class WahanaScanningActivity : AppCompatActivity() {
                         if(response.equals("Sudah discan")){
 
                             try {
-                                GlobalData.status_available = 0
-                                showDialogComplete("Masuk","Selamat menikmati wahana kami, semoga menyenangkan",R.raw.anim_complete)
-                                handler.removeCallbacks(this)
+//                                GlobalData.status_available = 0
+
+                                    showDialogComplete("Masuk","Selamat menikmati wahana kami, semoga menyenangkan",R.raw.anim_complete,0)
+                                    handler.removeCallbacks(this)
+
+
                             }catch (ex:Exception){
 
                             }
@@ -111,8 +115,7 @@ class WahanaScanningActivity : AppCompatActivity() {
                 loading.isDismiss()
                 if(response.equals("Sukses")){
                     try {
-                        GlobalData.status_available = 0
-                        showDialogComplete("Antrian dibatalkan","Silahkan meninggalkan barisan antrian",R.raw.anim_complete)
+                        showDialogComplete("Antrian dibatalkan","Silahkan meninggalkan barisan antrian",R.raw.anim_complete,0)
                     }catch (ex:Exception){
 
                     }
@@ -127,7 +130,7 @@ class WahanaScanningActivity : AppCompatActivity() {
             })
         request.add(stringRequest)
     }
-    private fun showDialogComplete(judulnya:String,isinya:String,anims:Int){
+    private fun showDialogComplete(judulnya:String,isinya:String,anims:Int,status:Int){
         val view = View.inflate(this, R.layout.dialog_anim_ok,null)
         val builder = AlertDialog.Builder(this)
         builder.setView(view)
@@ -151,6 +154,7 @@ class WahanaScanningActivity : AppCompatActivity() {
 
             btn_yes.setOnClickListener {
                 dialog.dismiss()
+                GlobalData.status_available = status
                 finish()
             }
         }catch (e:java.lang.Exception){
@@ -172,19 +176,22 @@ class WahanaScanningActivity : AppCompatActivity() {
                         editor.putString("barcode_antrian",response.toString())
                         editor.apply()
                         writeCode(response.toString())
+                        check_tiket()
                     }catch (ex:Exception){
                         Toast.makeText(this,"Terjadi Kesalahan",Toast.LENGTH_SHORT).show()
                         finish()
                     }
+                }else if(response.equals("Saldo anda tidak cukup untuk membeli tiket masuk wahana, lakukan topup terlebih dahulu")){
+                    showDialogComplete("Saldo tidak cukup",response.toString(),R.raw.moneyrun,0)
+
                 }else{
-                    showDialogComplete("Ooops","Syarat untuk memasuki wahana tidak terpenuhi",R.raw.oops)
+                    showDialogComplete("Ooops","Syarat untuk memasuki wahana tidak terpenuhi",R.raw.oops,0)
                 }
             },
             { error ->
                 Log.d("ErrorApp",error.toString())
                 loading.isDismiss()
                 finish()
-
             })
         request.add(stringRequest)
     }
@@ -204,7 +211,6 @@ class WahanaScanningActivity : AppCompatActivity() {
             binding.kode.text = code
             binding.namaUser.text = GlobalData.nama_user
         }catch (e:Exception){
-
         }
     }
 }

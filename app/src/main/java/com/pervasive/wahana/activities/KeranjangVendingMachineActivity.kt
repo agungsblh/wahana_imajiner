@@ -51,13 +51,19 @@ class KeranjangVendingMachineActivity : AppCompatActivity() {
             Toast.makeText(this, "Keranjang kosong", Toast.LENGTH_SHORT).show()
         }
 
-
     }
 
     private fun onAction(){
         binding.apply {
             bayar.setOnClickListener {
-                bayarVendingMachine()
+                var kode_vending = intent.getStringExtra("VENDING")
+                val intent = Intent(this@KeranjangVendingMachineActivity, VendingScannerActivity::class.java)
+                intent.putExtra("VENDING",kode_vending)
+                intent.putExtra("TOTAL_HARGA",keranjangAdapter.totalHarga)
+                finish()
+                startActivity(intent)
+
+                //bayarVendingMachine()
             }
             btnBack.setOnClickListener {
                 finish()
@@ -66,7 +72,6 @@ class KeranjangVendingMachineActivity : AppCompatActivity() {
     }
     private fun bayarVendingMachine(){
         loading.startLoading()
-
         var url:String = LinkApi.link_bayar_vending_machine
         var request: RequestQueue = Volley.newRequestQueue(applicationContext)
         var stringRequest = StringRequest(
@@ -76,7 +81,7 @@ class KeranjangVendingMachineActivity : AppCompatActivity() {
                 if(response.toString()=="Sukses"){
                     showDialogComplete("Sukses","Selamat menikmati produk kami",R.raw.anim_complete)
                 }else{
-                    showDialogComplete("Ooops",response.toString(),R.raw.oops)
+                    showDialogComplete("Ooops",response.toString(),R.raw.moneyrun)
                 }
             },
             { error ->
@@ -98,7 +103,7 @@ class KeranjangVendingMachineActivity : AppCompatActivity() {
         val anim = view.findViewById<LottieAnimationView>(R.id.anim)
 
         anim.setAnimation(anims)
-        anim.loop(false)
+        anim.loop(true)
         judul.text = judulnya
         isi.text = isinya
 

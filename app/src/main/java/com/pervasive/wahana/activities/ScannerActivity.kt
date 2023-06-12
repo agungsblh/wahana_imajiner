@@ -42,9 +42,13 @@ class ScannerActivity : AppCompatActivity() {
                 /////////////////////
                 if (it.text.toString().length==10){
                     when(it.text){
-                        "MSK-123-WH"->{
-
-                        }
+//                        "MSK-123-WH"->{
+//                            //kalo ada tiket di database, boleh masuk
+//
+//                            //else
+//
+//                            //
+//                        }
                         "WHN-001-RH"->{
                             val i = Intent(this,WahanaScanningActivity::class.java)
                             i.putExtra("state","CREATE")
@@ -136,6 +140,12 @@ class ScannerActivity : AppCompatActivity() {
                             startActivity(i)
                             finish()
                         }
+                        "VMC-001-MK"->{
+                            //bayar vending machine makanan
+                        }
+                        "VMC-002-MN"->{
+                            //bayar vending machine minuman
+                        }
                     }
                 }
                 //action
@@ -147,7 +157,6 @@ class ScannerActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG).show()
             }
         }
-
     }
     private fun onAction(){
         binding.apply {

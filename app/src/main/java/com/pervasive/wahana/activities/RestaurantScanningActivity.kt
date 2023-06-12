@@ -21,24 +21,29 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.pervasive.wahana.R
 import com.pervasive.wahana.adapter.CartMakananAdapter
 import com.pervasive.wahana.adapter.MakananAdapter
+import com.pervasive.wahana.adapter.ProdukVendingAdapter
 import com.pervasive.wahana.adapter.RiwayatTransaksiAdapter
 import com.pervasive.wahana.databinding.ActivityRestaurantScanningBinding
 import com.pervasive.wahana.model.CartItem
 import com.pervasive.wahana.model.MakananModel
+import com.pervasive.wahana.model.ProdukVendingModel
 import com.pervasive.wahana.model.RiwayatTransaksiModel
 import com.pervasive.wahana.utils.Converter
 import com.pervasive.wahana.utils.GlobalData
 import com.pervasive.wahana.utils.LinkApi
 import com.pervasive.wahana.utils.LoadingDialog
 import com.pervasive.wahana.utils.LoadingDialogFrg
+import java.util.Locale
 
 class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartListener {
     private lateinit var binding : ActivityRestaurantScanningBinding
-    var listMakanan = ArrayList<MakananModel>()
+    var listMakanan = mutableListOf<MakananModel>()
     val loading = LoadingDialog(this)
     private val keranjangList = mutableListOf<MakananModel>()
     private lateinit var keranjangAdapter: CartMakananAdapter
     //private lateinit var keranjangLainAdapter: CartMakananAdapter
+    private val originalProdukList = mutableListOf<MakananModel>()
+    private val filteredProdukList = mutableListOf<MakananModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantScanningBinding.inflate(layoutInflater)
@@ -63,6 +68,24 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
         recyclerViewKeranjang.layoutManager = LinearLayoutManager(this)
         keranjangAdapter = CartMakananAdapter(this,keranjangList,this)
         recyclerViewKeranjang.adapter = keranjangAdapter
+
+
+        //
+        binding.search.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchProduk(newText)
+                return true
+            }
+        })
+
+        val adapterku = MakananAdapter(this,this,filteredProdukList, this,keranjangAdapter)
+        // ...
+        binding.recyclerMenu.adapter = adapterku
+        //
 
     }
 
@@ -130,6 +153,14 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
         }
 
     }
+    private fun searchProduk(query: String) {
+        val keyword = query.trim().toLowerCase(Locale.getDefault())
+        filteredProdukList.clear()
+        filteredProdukList.addAll(originalProdukList.filter {
+            it.nama.toLowerCase(Locale.getDefault()).contains(keyword)
+        })
+        binding.recyclerMenu.adapter?.notifyDataSetChanged()
+    }
     private fun getListMakanan(){
         loading.startLoading()
         var queue: RequestQueue = Volley.newRequestQueue(this)
@@ -161,6 +192,16 @@ class RestaurantScanningActivity : AppCompatActivity(),MakananAdapter.AddToCartL
                             LinearLayoutManager.VERTICAL,false)
                         binding.recyclerMenu.setHasFixedSize(true)
                         binding.recyclerMenu.adapter = adapterku
+                        //
+                        //
+                        originalProdukList.addAll(listMakanan)
+                        filteredProdukList.addAll(listMakanan)
+
+
+                        val adapterkuu = MakananAdapter(this,this,filteredProdukList, this,keranjangAdapter)
+                        // ...
+                        binding.recyclerMenu.adapter = adapterkuu
+                        //
                         //
                         adapterku.notifyDataSetChanged()
                     }catch (e:Exception){

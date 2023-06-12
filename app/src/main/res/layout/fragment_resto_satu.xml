@@ -12,17 +12,23 @@
         android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:text="Tracking Resto"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_semibold"
+<!--        <TextView-->
+<!--            android:text="Tracking Resto"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:fontFamily="@font/poppins_semibold"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="-8dp"
+            android:background="@drawable/restoatas1"/>
         <androidx.cardview.widget.CardView
             android:elevation="5dp"
-            app:cardElevation="5dp"
             android:layout_margin="5dp"
+            app:cardElevation="5dp"
             app:cardMaxElevation="5dp"
             app:cardCornerRadius="20dp"
             android:layout_width="match_parent"
@@ -162,6 +168,11 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/restobawah1"
+            android:layout_marginTop="15dp"/>
     </LinearLayout>
 
 

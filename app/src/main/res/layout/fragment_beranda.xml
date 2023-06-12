@@ -187,7 +187,7 @@
                     </LinearLayout>
                     <LinearLayout
                         android:layout_marginTop="12dp"
-                        android:weightSum="3"
+                        android:weightSum="2"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -237,6 +237,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="12dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                         <LinearLayout
                             android:id="@+id/vending_machine_minuman"
                             android:layout_weight="1"
@@ -251,37 +259,7 @@
                                 android:layout_width="45dp"
                                 android:layout_height="45dp"/>
                             <TextView
-                                android:text="Vending Machine Drinks"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:textSize="10sp"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/poppins_semibold"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="12dp"
-                        android:weightSum="2"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:id="@+id/mercahndise"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                app:tint="@color/orange"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:src="@drawable/merchandise"
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"/>
-                            <TextView
-                                android:text="Merchandise"
+                                android:text="Vending Machine \nDrinks"
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:textSize="10sp"

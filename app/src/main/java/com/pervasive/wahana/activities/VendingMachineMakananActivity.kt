@@ -74,6 +74,7 @@ class VendingMachineMakananActivity : AppCompatActivity(), ProdukVendingAdapter.
         val intent = Intent(this, KeranjangVendingMachineActivity::class.java)
         val bundle = Bundle()
         bundle.putParcelableArrayList("KERANJANG_LIST", ArrayList(keranjangList))
+        intent.putExtra("VENDING","VMC-001-MK")
         intent.putExtras(bundle)
         startActivity(intent)
     }

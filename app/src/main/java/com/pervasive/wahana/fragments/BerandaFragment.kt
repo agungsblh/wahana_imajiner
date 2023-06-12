@@ -120,7 +120,7 @@ class BerandaFragment : Fragment() {
             }
             beliTiket.setOnClickListener{
 //                findNavController().navigate(R.id.action_berandaFragment_to_beliTiketFragment)
-
+                showDialogBeliTiket()
             }
             vendingMachineMinuman.setOnClickListener{
                 val intent = Intent(requireContext(),VendingMachineMinumanActivity::class.java)
@@ -131,6 +131,90 @@ class BerandaFragment : Fragment() {
                 startActivity(intent)
             }
         }
+    }
+    private fun showDialogBeliTiket(){
+        val view = View.inflate(requireContext(), R.layout.dialog_anim_ok_no,null)
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setView(view)
+        val dialog = builder.create()
+
+        val judul = view.findViewById<TextView>(R.id.judul)
+        val isi = view.findViewById<TextView>(R.id.isi)
+        val btn_yes = view.findViewById<Button>(R.id.yes)
+        val btn_no = view.findViewById<Button>(R.id.no)
+
+        judul.text = "Beli tiket"
+        isi.text = "Apakah Anda yakin ingin membeli tiket seharga Rp.150.000?"
+
+        dialog.show()
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        btn_yes.setOnClickListener {
+            //kirim data ke db
+            dialog.dismiss()
+            beliTiket()
+            //wait for verif
+        }
+        btn_no.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+    private fun beliTiket(){
+        LoadingDialogFrg.displayLoadingWithText(requireContext(),false)
+        var url:String = LinkApi.link_beli_tiket_masuk
+        var request: RequestQueue = Volley.newRequestQueue(requireContext())
+        var stringRequest = StringRequest(
+            Request.Method.GET,url+"?id_user="+GlobalData.id_user.toString(),
+            { response ->
+                LoadingDialogFrg.hideLoading()
+                if(response.equals("Sukses")){
+                    try {
+                        showDialogComplete("Sukses","Saldo kamu telah dikurangi untuk membeli tiket masuk wahana",R.raw.anim_complete)
+                        getDataAkun()
+                    }catch (ex:Exception){
+
+                    }
+                }else{
+                    showDialogComplete("Gagal",response.toString(),R.raw.oops)
+                }
+            },
+            { error ->
+                LoadingDialogFrg.hideLoading()
+                showDialogComplete("Error",error.toString(),R.raw.oops)
+            })
+        request.add(stringRequest)
+    }
+    private fun getTiketStatus(){
+        LoadingDialogFrg.displayLoadingWithText(requireContext(),false)
+        var url:String = LinkApi.link_cek_tiket_user
+        var request: RequestQueue = Volley.newRequestQueue(requireContext())
+        var stringRequest = StringRequest(
+            Request.Method.GET,url+"?id_user="+GlobalData.id_user.toString(),
+            { response ->
+                LoadingDialogFrg.hideLoading()
+                if(response.length==10){
+                    try {
+                        GlobalData.tiket_available = 1
+                        binding.ifAdaTiket.visibility = View.VISIBLE
+                        binding.noTiket.text = response.toString()
+                        binding.ifTidakAdaTiket.visibility = View.GONE
+                    }catch (ex:Exception){
+
+                    }
+                }else{
+                    GlobalData.tiket_available = 0
+                    binding.ifAdaTiket.visibility = View.GONE
+                    binding.ifTidakAdaTiket.visibility = View.VISIBLE
+                }
+            },
+            { error ->
+                LoadingDialogFrg.hideLoading()
+                showDialogComplete("Error",error.toString(),R.raw.oops)
+            })
+        request.add(stringRequest)
     }
     private fun getDataAkun(){
         LoadingDialogFrg.displayLoadingWithText(requireContext(),false)
@@ -155,6 +239,7 @@ class BerandaFragment : Fragment() {
                         GlobalData.detail_riwayat_penyakit = job.getString("nama_penyakit")
                         binding.saldo.text = "Rp. "+GlobalData.saldo.toString().reversed().chunked(3).joinToString(".").reversed()
                         cekStatus()
+                        getTiketStatus()
                     }
                 }
             },
@@ -300,11 +385,9 @@ class BerandaFragment : Fragment() {
         getDataAkun()
 
     }
-
     private fun stopRunnable(){
         handler.removeCallbacks(runnable)
     }
-
     override fun onPause() {
         super.onPause()
         stopRunnable()

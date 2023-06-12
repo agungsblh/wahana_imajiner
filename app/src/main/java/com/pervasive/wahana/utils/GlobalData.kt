@@ -15,7 +15,7 @@ class GlobalData {
         var tinggi_badan:Int = 0
         var berat_badan:Int = 0
 
-
+        var tiket_available:Int = 0
         var status_available:Int = 0
         var status_scanner:Int = 0
     }

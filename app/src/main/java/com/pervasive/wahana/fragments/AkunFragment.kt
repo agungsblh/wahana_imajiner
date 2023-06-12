@@ -53,7 +53,7 @@ class AkunFragment : Fragment() {
             namaUser.text = GlobalData.nama_user
             emailUser.text = GlobalData.email_user
             noHp.text = GlobalData.no_hp
-            jenisKelamin.text = GlobalData.jenis_kelamin
+//            jenisKelamin.text = GlobalData.jenis_kelamin
             riwayatPenyakit.text = GlobalData.detail_riwayat_penyakit
             tinggiBadan.text = GlobalData.tinggi_badan.toString()
             beratBadan.text = GlobalData.berat_badan.toString()

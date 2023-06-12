@@ -132,28 +132,28 @@
                     android:textColor="@color/black"
                     android:gravity="center|start"
                     android:paddingHorizontal="20dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jenis Kelamin"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:id="@+id/jenis_kelamin"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/rounded_button_20"
-                    android:backgroundTint="@color/abu_soft"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="10dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="Laki-laki"
-                    android:textColor="@color/black"
-                    android:gravity="center|start"
-                    android:paddingHorizontal="20dp"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Jenis Kelamin"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:fontFamily="@font/poppins_semibold"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:layout_marginTop="5dp"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/jenis_kelamin"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:background="@drawable/rounded_button_20"-->
+<!--                    android:backgroundTint="@color/abu_soft"-->
+<!--                    android:layout_marginHorizontal="20dp"-->
+<!--                    android:layout_marginVertical="10dp"-->
+<!--                    android:fontFamily="@font/poppins"-->
+<!--                    android:text="Laki-laki"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:gravity="center|start"-->
+<!--                    android:paddingHorizontal="20dp"/>-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
